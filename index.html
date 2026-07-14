@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sofía Zapata — Desarrollo web &amp; edición de video</title>
+<meta name="description" content="Portfolio de Sofía Zapata: desarrollo frontend, diseño UI y edición de video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body class="sz-body">
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="navbar" id="navbar" aria-label="Navegación principal">
+  <div class="navbar__inner">
+    <span class="navbar__brand">Sofía Zapata</span>
+    <ul class="navbar__list" id="navList">
+      <li><a class="navbar__link" href="#projects" data-nav-target="projects"><span class="navbar__dot"></span><span data-i18n="nav.0.label">Proyectos</span></a></li>
+      <li><a class="navbar__link" href="#about" data-nav-target="about"><span class="navbar__dot"></span><span data-i18n="nav.1.label">Sobre mí</span></a></li>
+      <li><a class="navbar__link" href="#skills" data-nav-target="skills"><span class="navbar__dot"></span><span data-i18n="nav.2.label">Skills</span></a></li>
+      <li><a class="navbar__link" href="#video-editing" data-nav-target="video-editing"><span class="navbar__dot"></span><span data-i18n="nav.3.label">Video</span></a></li>
+      <li><a class="navbar__link" href="#contact" data-nav-target="contact"><span class="navbar__dot"></span><span data-i18n="nav.4.label">Contacto</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<header class="hero">
+  <div class="hero__grid">
+    <div data-reveal data-reveal-delay="1">
+      <span class="hero__eyebrow"><span class="pulse-dot"></span><span data-i18n="banner.eyebrow">Disponible para trabajos freelance</span></span>
+
+      <h1 class="hero__title">
+        <span data-i18n="banner.titlePart1">Desarrollo web</span>
+        <span class="hero__plus">+</span>
+        <span class="hero__title-serif" data-i18n="banner.titlePart2">edición de video</span>
+      </h1>
+
+      <p class="hero__subtitle" data-i18n="banner.subtitle">Soy Sofía Zapata. Combino frontend y contenido audiovisual para crear sitios web claros, modernos y piezas visuales pensadas para mostrar marcas, productos y proyectos de forma más profesional.</p>
+
+      <div class="hero__ctas">
+        <button class="btn btn--primary" id="btnScrollProjects" type="button">
+          <span data-i18n="banner.btnProjects">Ver proyectos web</span>
+          <svg class="btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+        <button class="btn btn--outline" id="btnScrollVideo" type="button"><span data-i18n="banner.btnVideo">Ver edición</span></button>
+        <a class="btn btn--outline" href="mailto:sofizapata2004@gmail.com"><span data-i18n="banner.btnContact">Escribime</span></a>
+        <button class="btn btn--ghost" id="btnCopyLink" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copyBtnText" data-i18n="banner.btnCopyLink">Copiar link</span>
+        </button>
+      </div>
+
+      <div class="hero__social">
+        <a class="hero__social-link" href="https://www.linkedin.com/in/sofi-zapata-b58427265/" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.7A1.7 1.7 0 118.2 5 1.7 1.7 0 016.5 6.7zM19 19h-3v-5.6c0-1.4-.5-2.4-1.8-2.4a2 2 0 00-1.8 1.3 2.4 2.4 0 00-.1 1V19h-3s.1-9.5 0-11h3v1.6a3 3 0 012.7-1.5c2 0 3.5 1.3 3.5 4V19z"></path></svg>
+          LinkedIn
+        </a>
+        <span class="hero__social-dot"></span>
+        <a class="hero__social-link" href="https://github.com/sofiazapataa" target="_blank" rel="noopener noreferrer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.3 1.3-3.2-.2-.3-.6-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.9 1.3 2 1.3 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z"></path></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__avatar-col" data-reveal data-reveal-delay="2">
+      <div class="hero__avatar-wrap">
+        <div class="hero__avatar-ring"></div>
+        <div class="hero__avatar-ring hero__avatar-ring--dashed"></div>
+        <img class="hero__avatar-img" src="./public/logos/FotoPerfil.png" alt="Sofía Zapata">
+        <div class="hero__avatar-badge">UX · FRONT · VIDEO</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- ═══════════════════════ FOCUS AREAS ═══════════════════════ -->
+  <section id="focus-areas" data-reveal>
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="focusAreas.eyebrow">Áreas principales</span>
+      <h2 class="section-title" data-i18n="focusAreas.title">Dos líneas de trabajo, un mismo portfolio</h2>
+      <p class="section-intro" data-i18n="focusAreas.intro">Trabajo tanto en desarrollo web como en edición de video. Las dos áreas forman parte de mi perfil y de lo que hoy quiero ofrecer de forma freelance.</p>
+    </div>
+
+    <div class="focus-grid">
+      <article class="focus-card focus-card--light" data-reveal data-reveal-delay="1">
+        <div class="focus-card__index">01 / DEV</div>
+        <span class="focus-card__tag" data-i18n="focusAreas.devTag">Desarrollo web</span>
+        <h3 class="focus-card__title" data-i18n="focusAreas.devTitle">Interfaces, sitios y experiencia visual</h3>
+        <p class="focus-card__text" data-i18n="focusAreas.devText">Desarrollo portfolios, landing pages, catálogos y experiencias frontend donde priorizo claridad visual, estructura y responsive.</p>
+        <ul class="focus-card__list">
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.0">React y maquetado responsive</span></li>
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.1">Portfolios, landings y catálogos</span></li>
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.2">Diseño UI con foco visual</span></li>
+        </ul>
+        <button class="focus-card__btn btn-scroll-projects" type="button">
+          <span data-i18n="focusAreas.devBtn">Ver proyectos web</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+      </article>
+
+      <article class="focus-card focus-card--dark" data-reveal data-reveal-delay="2">
+        <div class="focus-card__glow"></div>
+        <div class="focus-card__index">02 / VIDEO</div>
+        <span class="focus-card__tag" data-i18n="focusAreas.videoTag">Edición de video</span>
+        <h3 class="focus-card__title" data-i18n="focusAreas.videoTitle">Contenido audiovisual para redes y marcas</h3>
+        <p class="focus-card__text" data-i18n="focusAreas.videoText">También trabajo en edición de piezas visuales y videos cortos pensados para comunicar mejor una marca, producto o proyecto.</p>
+        <ul class="focus-card__list">
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.0">Reels y contenido para redes</span></li>
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.1">Videos promocionales</span></li>
+          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.2">Ritmo, orden visual y estética</span></li>
+        </ul>
+        <button class="focus-card__btn btn-scroll-video" type="button">
+          <span data-i18n="focusAreas.videoBtn">Ver edición de video</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section id="about" data-reveal>
+    <div class="about-head">
+      <div>
+        <span class="section-eyebrow" data-i18n="about.eyebrow">Sobre mí</span>
+        <h2 class="about-head__title"><span data-i18n="about.titlePart1">Lo que aporto</span> <span class="section-title-serif" data-i18n="about.titlePart2">a un proyecto</span></h2>
+      </div>
+      <div class="about-head__intro-col">
+        <p class="about-head__intro" data-i18n="about.intro">Soy Sofía, desarrolladora frontend en formación. Me enfoco en combinar React, diseño visual y una estructura clara para crear sitios web modernos, bien presentados y fáciles de usar.</p>
+      </div>
+    </div>
+
+    <div class="about-cards">
+      <article class="about-card" data-reveal data-reveal-delay="1">
+        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.0.num">01</span><span class="about-card__bar"></span></div>
+        <h3 class="about-card__title" data-i18n="about.cards.0.title">Frontend</h3>
+        <p class="about-card__text" data-i18n="about.cards.0.text">Desarrollo interfaces claras, prolijas y responsive con foco en una buena experiencia visual.</p>
+      </article>
+      <article class="about-card" data-reveal data-reveal-delay="2">
+        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.1.num">02</span><span class="about-card__bar"></span></div>
+        <h3 class="about-card__title" data-i18n="about.cards.1.title">Diseño UI</h3>
+        <p class="about-card__text" data-i18n="about.cards.1.text">Me interesa que cada web comunique mejor una marca, proyecto o producto desde lo visual.</p>
+      </article>
+      <article class="about-card" data-reveal data-reveal-delay="3">
+        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.2.num">03</span><span class="about-card__bar"></span></div>
+        <h3 class="about-card__title" data-i18n="about.cards.2.title">Freelance</h3>
+        <p class="about-card__text" data-i18n="about.cards.2.text">Busco trabajar en proyectos donde pueda aportar diseño, estructura y una presentación más profesional.</p>
+      </article>
+    </div>
+
+    <div class="about-chips">
+      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.0">UI visualmente cuidada</span></span>
+      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.1">Responsive</span></span>
+      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.2">Contenido digital</span></span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SKILLS (marquee) ═══════════════════════ -->
+  <section id="skills" data-reveal>
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="skills.eyebrow">Skills</span>
+      <h2 class="section-title" style="font-size:clamp(28px, 3.4vw, 42px);" data-i18n="skills.title">Tecnologías y herramientas</h2>
+      <p class="section-intro" style="max-width:600px;" data-i18n="skills.subtitle">Herramientas con las que desarrollo interfaces, prototipos y proyectos visualmente cuidados.</p>
+    </div>
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="skillsMarquee"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PROJECTS (coverflow) ═══════════════════════ -->
+  <section id="projects" data-reveal>
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="projects.eyebrow">Desarrollo web</span>
+      <h2 class="section-title" style="font-size:clamp(32px, 4vw, 52px); max-width:none;"><span data-i18n="projects.titlePart1">Proyectos</span> <span class="section-title-serif" data-i18n="projects.titlePart2">seleccionados</span></h2>
+      <p class="section-intro" style="max-width:620px;" data-i18n="projects.intro">Podés recorrer mis trabajos con las flechas y abrir cada proyecto para ver su detalle completo.</p>
+    </div>
+
+    <div class="coverflow-stage" id="coverflowStage"></div>
+
+    <div class="coverflow-controls">
+      <button class="coverflow-arrow" id="prevProject" type="button" aria-label="Proyecto anterior">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+      </button>
+      <div class="coverflow-dots" id="coverflowDots"></div>
+      <button class="coverflow-arrow" id="nextProject" type="button" aria-label="Proyecto siguiente">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </button>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════════════ VIDEO SKILLS (dark, full-bleed) ═══════════════════════ -->
+<section id="video-skills" data-reveal>
+  <div class="video-skills__vignette"></div>
+  <div class="video-skills__head">
+    <span class="section-eyebrow video-skills__eyebrow" data-i18n="videoSkills.eyebrow">Skills audiovisuales</span>
+    <h2 class="section-title video-skills__title"><span data-i18n="videoSkills.titlePart1">Herramientas de</span> <span class="section-title-serif" data-i18n="videoSkills.titlePart2">edición de video</span></h2>
+    <p class="section-intro video-skills__subtitle" data-i18n="videoSkills.subtitle">El stack con el que genero, edito y armo mis piezas de video con IA, de la idea al resultado final.</p>
+  </div>
+
+  <div class="marquee-viewport marquee-viewport--dark">
+    <div class="marquee-track marquee-track--dark" id="videoSkillsMarquee"></div>
+  </div>
+
+  <div class="video-skills__hint">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    <span class="video-skills__hint-text" data-i18n="videoSkills.hint">Arrastrá para explorar</span>
+  </div>
+</section>
+
+<main class="container">
+  <!-- ═══════════════════════ VIDEO EDITING ═══════════════════════ -->
+  <section id="video-editing" data-reveal>
+    <div class="section-head">
+      <span class="section-eyebrow" data-i18n="videoEditing.eyebrow">Trabajo audiovisual</span>
+      <h2 class="section-title" style="font-size:clamp(32px, 4vw, 52px); max-width:none;"><span data-i18n="videoEditing.titlePart1">Edición</span> <span class="section-title-serif" data-i18n="videoEditing.titlePart2">de video</span></h2>
+      <p class="section-intro" style="max-width:680px;" data-i18n="videoEditing.intro">Esta parte del portfolio reúne mi perfil audiovisual: edición de piezas limpias, dinámicas y pensadas para comunicar mejor una marca o una idea en formatos digitales.</p>
+    </div>
+
+    <div class="ve-services" id="veServices"></div>
+
+    <div>
+      <div class="reels-head">
+        <div>
+          <span class="reels-head__eyebrow" data-i18n="videoEditing.reelsEyebrow">Últimas piezas</span>
+          <h3 class="reels-head__title" data-i18n="videoEditing.reelsTitle">Ejemplos recientes</h3>
+        </div>
+        <span class="reels-head__hint" data-i18n="videoEditing.reelsHint">2 piezas</span>
+      </div>
+
+      <div class="reels-grid" id="reelsGrid"></div>
+    </div>
+
+    <div class="ve-footer">
+      <a class="btn btn--primary" href="mailto:sofizapata2004@gmail.com">
+        <span data-i18n="videoEditing.btn">Consultar por edición</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <span class="ve-footer__note" data-i18n="videoEditing.footnote">Respuesta en 24-48 h hábiles</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact" data-reveal>
+    <div class="section-head">
+      <span class="section-eyebrow"><span class="pulse-dot" style="margin-right:8px; width:6px; height:6px;"></span><span data-i18n="contact.eyebrow">Disponible para freelance</span></span>
+      <h2 class="section-title" style="font-size:clamp(32px, 4vw, 52px); max-width:none;">
+        <span class="sz-attention-under"><span data-i18n="contact.titlePart1">Trabajemos</span> <span class="sz-attention-word section-title-serif" style="color:var(--accent);" data-i18n="contact.titlePart2">juntos</span></span>
+      </h2>
+      <p class="section-intro" data-i18n="contact.intro">Si tenés una idea, una marca o un proyecto para mostrar, podés escribirme desde acá. Trabajo tanto en desarrollo web como en edición de video.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="sz-name" data-i18n="contact.labelName">Nombre</label>
+          <input id="sz-name" name="name" type="text" required data-i18n-placeholder="contact.placeholderName" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label for="sz-email" data-i18n="contact.labelEmail">Email</label>
+          <input id="sz-email" name="email" type="email" required data-i18n-placeholder="contact.placeholderEmail" placeholder="tunombre@email.com">
+        </div>
+        <div class="form-group">
+          <label for="sz-msg" data-i18n="contact.labelMessage">Mensaje</label>
+          <textarea id="sz-msg" name="message" required rows="6" data-i18n-placeholder="contact.placeholderMessage" placeholder="Contame sobre tu proyecto..."></textarea>
+        </div>
+        <button type="submit" class="contact-form__submit">
+          <span data-i18n="contact.btnSend">Enviar mensaje</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+        </button>
+      </form>
+
+      <aside class="contact-card">
+        <div>
+          <p class="contact-card__label" data-i18n="contact.cardEmailLabel">Email directo</p>
+          <a class="contact-card__email" href="mailto:sofizapata2004@gmail.com">sofizapata2004@gmail.com</a>
+        </div>
+        <div class="contact-card__divider"></div>
+        <div>
+          <p class="contact-card__label" data-i18n="contact.cardWorkLabel">Qué hago</p>
+          <ul class="contact-card__list">
+            <li><span class="contact-card__list-dot"></span><span data-i18n="contact.cardWorkItems.0">Desarrollo web</span></li>
+            <li><span class="contact-card__list-dot"></span><span data-i18n="contact.cardWorkItems.1">Landing pages y portfolios</span></li>
+            <li><span class="contact-card__list-dot"></span><span data-i18n="contact.cardWorkItems.2">Edición de video y contenido visual</span></li>
+          </ul>
+        </div>
+        <div class="contact-card__divider"></div>
+        <div>
+          <p class="contact-card__label" data-i18n="contact.cardSocialLabel">Redes</p>
+          <div class="social-row">
+            <a class="social-btn" href="https://www.linkedin.com/in/sofi-zapata-b58427265/" target="_blank" rel="noopener noreferrer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5V8h3v11zM6.5 6.7A1.7 1.7 0 118.2 5 1.7 1.7 0 016.5 6.7zM19 19h-3v-5.6c0-1.4-.5-2.4-1.8-2.4a2 2 0 00-1.8 1.3 2.4 2.4 0 00-.1 1V19h-3s.1-9.5 0-11h3v1.6a3 3 0 012.7-1.5c2 0 3.5 1.3 3.5 4V19z"></path></svg>
+              LinkedIn
+            </a>
+            <a class="social-btn" href="https://github.com/sofiazapataa" target="_blank" rel="noopener noreferrer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.3 1.3-3.2-.2-.3-.6-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.9 1.3 2 1.3 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z"></path></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CERTIFICATES ═══════════════════════ -->
+  <section id="certificates">
+    <div style="text-align:center;">
+      <button class="certs-toggle" id="certsToggle" type="button" aria-expanded="false" aria-controls="certsPanel">
+        <svg class="certs-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+        <span data-i18n="certificates.summary">Formación complementaria</span>
+      </button>
+    </div>
+
+    <div class="certs-panel" id="certsPanel" hidden>
+      <p class="certs-intro" data-i18n="certificates.intro">Algunos cursos y certificados que forman parte de mi recorrido.</p>
+      <div class="certs-grid" id="certsGrid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <span class="site-footer__text">© 2026 · Sofía Zapata · Mar del Plata, AR</span>
+    <span class="site-footer__text" data-i18n="footer.built">Diseñado y desarrollado por Sofía · 2026</span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ FLOATING CV ═══════════════════════ -->
+<a class="floating-cv" href="./public/pdf/sofia_zapata_cv.pdf" download="Sofia_Zapata_CV.pdf">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+  <span data-i18n="floatingCV.label">Descargar CV</span>
+</a>
+
+<!-- ═══════════════════════ THEME / LANG CONTROLS ═══════════════════════ -->
+<div class="controls-group" role="group" aria-label="Controles de tema e idioma">
+  <button class="control-btn" id="btnTheme" type="button" aria-label="Modo oscuro" title="Modo oscuro">
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+  </button>
+  <span class="control-divider"></span>
+  <button class="control-btn control-btn--lang" id="btnLang" type="button" aria-label="Switch to English" title="Switch to English">EN</button>
+</div>
+
+<!-- ═══════════════════════ PROJECT MODAL ═══════════════════════ -->
+<div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true" hidden>
+  <div class="modal" id="projectModal">
+    <button class="modal__close" id="projectModalClose" aria-label="Cerrar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+    </button>
+    <div class="modal__media"><img id="modalProjectCover" src="" alt=""></div>
+    <div class="modal__body">
+      <div class="modal__badges">
+        <span class="badge" id="modalProjectType"></span>
+        <span class="badge badge--featured" id="modalProjectFeatured" data-i18n="projects.labelFeatured" hidden>★ Destacado</span>
+      </div>
+      <h3 class="modal__title" id="modalProjectTitle"></h3>
+      <p class="modal__desc" id="modalProjectDesc"></p>
+      <div class="modal__stack" id="modalProjectStack"></div>
+      <div class="modal__actions">
+        <a class="modal__cta modal__cta--primary" id="modalProjectDemo" href="#" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="projects.btnDemo">Ver demo</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>
+        </a>
+        <span class="modal__cta modal__cta--disabled" id="modalProjectSoon" data-i18n="projects.soonLabel">Demo pronto</span>
+        <a class="modal__cta modal__cta--outline" id="modalProjectRepo" href="#" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="projects.btnRepo">Ver repositorio</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.3 1.3-3.2-.2-.3-.6-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.9 1.3 2 1.3 3.2 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0012 .3z"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ VIDEO MODAL ═══════════════════════ -->
+<div class="modal-overlay modal-overlay--video" id="videoModalOverlay" role="dialog" aria-modal="true" hidden>
+  <div class="modal modal--video" id="videoModal">
+    <button class="modal__close" id="videoModalClose" aria-label="Cerrar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+    </button>
+    <div class="modal__video-media" id="modalVideoMedia">
+      <div class="modal__video-glow" id="modalVideoGlow"></div>
+      <div class="modal__video-play">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#0a0a0a" style="margin-left:4px;"><path d="M8 5v14l11-7z"></path></svg>
+      </div>
+      <div class="modal__video-info">
+        <div class="modal__video-title" id="modalVideoTitle"></div>
+        <div class="modal__video-duration" id="modalVideoDuration"></div>
+      </div>
+    </div>
+    <div class="modal__body">
+      <span class="badge badge--ai"><span class="badge--ai-dot"></span><span data-i18n="videoEditing.aiTag">Generado con IA</span></span>
+      <h3 class="modal__title" id="modalVideoTitle2"></h3>
+      <p class="modal__desc" id="modalVideoSummary"></p>
+      <div class="modal__process">
+        <p><strong data-i18n="videoEditing.processLabel">Cómo se hizo:</strong> <span id="modalVideoProcess"></span></p>
+      </div>
+      <div class="modal__stack-plain" id="modalVideoStack"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Copied toast -->
+<div class="toast" id="copiedToast" role="status" aria-live="polite" hidden>✓ <span data-i18n="banner.btnCopied">¡Link copiado!</span></div>
+
+<script src="./js/data.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
