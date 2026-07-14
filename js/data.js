@@ -1,5 +1,5 @@
 // Contenido y traducciones del portfolio de Sofía Zapata.
-const BASE = "./public/";
+const BASE = "./assets/";
 
 const TRANSLATIONS = {
   es: {
