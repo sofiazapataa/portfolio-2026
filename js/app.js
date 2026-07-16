@@ -70,6 +70,7 @@
     } catch (e) {}
     applyI18n();
     renderVEServices();
+    renderVEHero();
     renderReels();
     renderProjectCards();
     updateCoverflow();
@@ -113,6 +114,27 @@
         '<div class="ve-service__num">' + num + '</div><p class="ve-service__text">' + text + "</p>";
       container.appendChild(el);
     });
+  }
+
+  // ---------------------------------------------------------------------
+  // Featured video hero (Las Golondrinas)
+  // ---------------------------------------------------------------------
+  function renderVEHero() {
+    const h = T().videoEditing.hero;
+    const video = document.getElementById("veHeroVideo");
+    if (video.getAttribute("src") !== VIDEO_HERO_MEDIA.video) {
+      video.src = VIDEO_HERO_MEDIA.video;
+      video.poster = VIDEO_HERO_MEDIA.poster;
+    }
+    document.getElementById("veHeroTag").innerHTML = '<span class="ve-hero__tag-dot"></span>' + h.tag;
+    document.getElementById("veHeroLabel").textContent = h.label;
+    document.getElementById("veHeroTitle").textContent = h.title;
+    document.getElementById("veHeroDuration").textContent = h.duration;
+    document.getElementById("veHeroDesc").textContent = h.desc;
+    document.getElementById("veHeroDetailBtn").textContent = T().videoEditing.btnDetail;
+    const liveLink = document.getElementById("veHeroLiveLink");
+    liveLink.href = VIDEO_HERO_MEDIA.liveUrl;
+    liveLink.textContent = h.ctaLive;
   }
 
   // ---------------------------------------------------------------------
@@ -379,9 +401,33 @@
   // ---------------------------------------------------------------------
   // Video modal
   // ---------------------------------------------------------------------
+  function setVideoModalPlayer(src, poster) {
+    const media = document.getElementById("modalVideoMedia");
+    const player = document.getElementById("modalVideoPlayer");
+    const playBtn = media.querySelector(".modal__video-play");
+    const glow = document.getElementById("modalVideoGlow");
+    if (src) {
+      player.src = src;
+      player.poster = poster || "";
+      player.hidden = false;
+      player.currentTime = 0;
+      player.play().catch(() => {});
+      playBtn.style.display = "none";
+      glow.style.background = "none";
+      media.style.background = "#0a0a0a";
+    } else {
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+      player.hidden = true;
+      playBtn.style.display = "";
+    }
+  }
+
   function openVideoModal(i) {
     const v = T().videoEditing.videos[i];
     const poster = REEL_POSTERS[i];
+    setVideoModalPlayer(null);
     document.getElementById("modalVideoMedia").style.background = poster.bg;
     document.getElementById("modalVideoGlow").style.background =
       "radial-gradient(60% 60% at 50% 45%, " + poster.accent + " 0%, transparent 70%)";
@@ -391,12 +437,38 @@
     document.getElementById("modalVideoSummary").textContent = v.summary;
     document.getElementById("modalVideoProcess").textContent = v.process;
     document.getElementById("modalVideoStack").innerHTML = VIDEO_STACK.map((s) => "<span>" + s + "</span>").join("");
+    document.getElementById("modalVideoAiTag").textContent = T().videoEditing.aiTag;
+    document.getElementById("modalVideoActions").hidden = true;
+
+    showOverlay("videoModalOverlay");
+  }
+
+  function openVideoHeroModal() {
+    const h = T().videoEditing.hero;
+    setVideoModalPlayer(VIDEO_HERO_MEDIA.video, VIDEO_HERO_MEDIA.poster);
+    document.getElementById("modalVideoTitle").textContent = h.title;
+    document.getElementById("modalVideoTitle2").textContent = h.title;
+    document.getElementById("modalVideoDuration").textContent = h.duration;
+    document.getElementById("modalVideoSummary").textContent = h.summary;
+    document.getElementById("modalVideoProcess").textContent = h.process;
+    document.getElementById("modalVideoStack").innerHTML = VIDEO_STACK.map((s) => "<span>" + s + "</span>").join("");
+    document.getElementById("modalVideoAiTag").textContent = h.tag;
+
+    const actions = document.getElementById("modalVideoActions");
+    actions.hidden = false;
+    const liveBtn = document.getElementById("modalVideoLive");
+    liveBtn.href = VIDEO_HERO_MEDIA.liveUrl;
+    liveBtn.querySelector("span").textContent = h.ctaLive;
+    const caseBtn = document.getElementById("modalVideoCase");
+    caseBtn.href = VIDEO_HERO_MEDIA.caseUrl;
+    caseBtn.querySelector("span").textContent = h.ctaCase;
 
     showOverlay("videoModalOverlay");
   }
 
   function closeVideoModal() {
     hideOverlay("videoModalOverlay");
+    document.getElementById("modalVideoPlayer").pause();
   }
 
   function showOverlay(id) {
@@ -540,6 +612,7 @@
     renderMarquee(document.getElementById("skillsMarquee"), SKILLS, false);
     renderMarquee(document.getElementById("videoSkillsMarquee"), VIDEO_SKILLS, true);
     renderVEServices();
+    renderVEHero();
     renderReels();
     renderCerts();
     renderProjectCards();
@@ -574,6 +647,7 @@
     });
     document.getElementById("videoModal").addEventListener("click", (e) => e.stopPropagation());
     document.getElementById("videoModalClose").addEventListener("click", closeVideoModal);
+    document.getElementById("veHeroDetailBtn").addEventListener("click", openVideoHeroModal);
 
     document.getElementById("contactForm").addEventListener("submit", submitForm);
     document.getElementById("certsToggle").addEventListener("click", toggleCerts);

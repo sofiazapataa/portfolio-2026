@@ -71,6 +71,8 @@ const TRANSLATIONS = {
       descriptions: {
         "Cine Paseo Aldrey":
           "Rediseño completo de la experiencia digital del único cine del shopping en Mar del Plata — de la cartelera al checkout — resolviendo duplicados, redirección externa y ausencia de diseño mobile.",
+        "Las Golondrinas":
+          "Rediseño UX/UI del flujo de reservas de una posada y spa en Sierra de la Ventana — de una web informativa a un recorrido guiado con reserva demostrativa en seis pasos.",
         "Tienda Multiskin":
           "Catálogo de una tienda de cosmética vegana con backend, autenticación y panel de administración. Es el proyecto más completo del portfolio y combina frontend, backend y presentación visual.",
         "Tienda Skincare":
@@ -101,6 +103,19 @@ const TRANSLATIONS = {
       btnDetail: "Ver detalle",
       btn: "Consultar por edición",
       footnote: "Respuesta en 24-48 h hábiles",
+      hero: {
+        label: "Proyecto destacado",
+        tag: "Generado con Higgsfield AI",
+        title: "Las Golondrinas",
+        duration: "0:08 · Horizontal 16:9",
+        desc: "Video hero para la home del rediseño de Las Golondrinas, animado con IA a partir de la imagen final del sitio.",
+        summary:
+          "Pieza audiovisual para la primera pantalla del rediseño web de Posada y Spa Las Golondrinas (Sierra de la Ventana): un video corto en loop que le da movimiento y atmósfera al hero, reforzando la sensación de calma y naturaleza de la marca desde el primer segundo.",
+        process:
+          "Higgsfield AI es una plataforma de generación de video con inteligencia artificial especializada en animar imágenes fijas (imagen a video), agregando movimiento de cámara y de elementos del entorno —nubes, luz, vegetación— sin perder fidelidad al diseño original. Se partió de la imagen final del hero ya diseñada para el sitio y se generó el clip con ese modelo; después se optimizó el archivo y se integró como fondo de video en loop, con autoplay silencioso, en el hero del sitio rediseñado.",
+        ctaLive: "Ver sitio rediseñado",
+        ctaCase: "Ver caso de estudio",
+      },
       videos: [
         {
           title: "Kyvrapets",
@@ -232,6 +247,8 @@ const TRANSLATIONS = {
       descriptions: {
         "Cine Paseo Aldrey":
           "Complete redesign of the digital experience for Mar del Plata's only shopping cinema — from the billboard to checkout — solving duplicates, external redirects and lack of mobile design.",
+        "Las Golondrinas":
+          "UX/UI redesign of the booking flow for an inn and spa in Sierra de la Ventana — from an informational website to a guided journey with a six-step demo reservation.",
         "Tienda Multiskin":
           "Catalog for a vegan cosmetics store with backend, authentication and admin panel. The most complete project in the portfolio, combining frontend, backend and visual presentation.",
         "Tienda Skincare": "Skin quiz and product recommendation with a simple, clear visual experience focused on navigation.",
@@ -261,6 +278,19 @@ const TRANSLATIONS = {
       btnDetail: "View details",
       btn: "Inquire about editing",
       footnote: "Reply within 24-48 business hours",
+      hero: {
+        label: "Featured project",
+        tag: "Generated with Higgsfield AI",
+        title: "Las Golondrinas",
+        duration: "0:08 · Horizontal 16:9",
+        desc: "Hero video for the homepage of the Las Golondrinas redesign, animated with AI from the site's final image.",
+        summary:
+          "Audiovisual piece for the first screen of the Las Golondrinas Inn & Spa website redesign (Sierra de la Ventana): a short looping video that brings motion and atmosphere to the hero, reinforcing the brand's sense of calm and nature from the first second.",
+        process:
+          "Higgsfield AI is an AI video generation platform specialized in animating still images (image-to-video), adding camera movement and motion to environmental elements — clouds, light, vegetation — without losing fidelity to the original design. The process started from the site's finished hero image, generated the clip with that model, then optimized the file and integrated it as a looping video background with silent autoplay in the redesigned site's hero.",
+        ctaLive: "See redesigned site",
+        ctaCase: "See case study",
+      },
       videos: [
         {
           title: "Kyvrapets",
@@ -334,6 +364,15 @@ const PROJECTS_DATA = [
     repo: "https://github.com/sofiazapataa/presentacion-redise-o-cine.git",
     stack: ["Figma", "HTML", "Claude AI"],
     featured: true,
+  },
+  {
+    title: "Las Golondrinas",
+    type: "UX/UI Design, Case Study",
+    cover: BASE + "covers/las-golondrinas.png",
+    demo: "https://las-golondrinas-caso-estudio.vercel.app/",
+    repo: "",
+    stack: ["Figma", "HTML", "CSS"],
+    featured: false,
   },
   {
     title: "Tienda Multiskin",
@@ -431,3 +470,10 @@ const REEL_POSTERS = [
 ];
 
 const VIDEO_STACK = ["Higgsfield AI", "Kling 3.0", "Nano Banana Pro", "CapCut"];
+
+const VIDEO_HERO_MEDIA = {
+  video: BASE + "videos/las-golondrinas-hero.mp4",
+  poster: BASE + "covers/las-golondrinas-poster.png",
+  liveUrl: "https://re-diseno-golondrinas-posadas.vercel.app/",
+  caseUrl: "https://las-golondrinas-caso-estudio.vercel.app/",
+};

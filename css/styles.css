@@ -479,6 +479,29 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 }
 .ve-service__text { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); font-weight: 500; }
 
+.ve-hero {
+  display: grid; grid-template-columns: 1.15fr 1fr; border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border); background: var(--surface); box-shadow: var(--sh-2); margin-bottom: 44px;
+}
+.ve-hero__media { position: relative; min-height: 340px; overflow: hidden; background: #0a0a0a; }
+.ve-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ve-hero__scrim {
+  position: absolute; inset: auto 0 0 0; height: 45%; pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.55) 100%);
+}
+.ve-hero__tag {
+  position: absolute; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 999px; background: rgba(10, 10, 10, 0.55); backdrop-filter: blur(6px);
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; color: #fff; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.ve-hero__tag-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.ve-hero__body { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 40px; }
+.ve-hero__label { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--subtle); }
+.ve-hero__title { font-family: var(--font-display); font-weight: 600; font-size: 30px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
+.ve-hero__duration { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; }
+.ve-hero__desc { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+.ve-hero__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+
 .reels-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
 .reels-head__eyebrow { display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; color: var(--ink-2); letter-spacing: 0.06em; text-transform: uppercase; }
 .reels-head__title { margin-top: 12px; font-family: var(--font-display); font-weight: 600; font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
@@ -653,6 +676,8 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .modal__media { background: var(--bg-tint); min-height: 100%; overflow: hidden; }
 .modal__media img { width: 100%; height: 100%; object-fit: cover; }
 .modal__video-media { position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+.modal__video-player { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000; }
+.modal__video-player[hidden] { display: none; }
 .modal__video-glow { position: absolute; inset: 0; }
 .modal__video-play {
   position: relative; width: 80px; height: 80px; border-radius: 50%; background: rgba(255, 255, 255, 0.95);
@@ -712,11 +737,14 @@ input:-webkit-autofill, textarea:-webkit-autofill {
   .modal > .modal__media { max-height: 260px; }
   .modal--video { grid-template-columns: 1fr !important; }
   .modal--video > .modal__video-media { min-height: 280px !important; }
+  .ve-hero { grid-template-columns: 1fr !important; }
+  .ve-hero__media { min-height: 240px !important; }
 }
 @media (max-width: 720px) {
   .focus-grid { grid-template-columns: 1fr !important; }
   .about-cards { grid-template-columns: 1fr !important; }
   .ve-services { grid-template-columns: 1fr !important; }
+  .ve-hero__body { padding: 24px !important; }
   .reels-grid { grid-template-columns: 1fr !important; max-width: 340px !important; margin-left: auto; margin-right: auto; }
   .navbar__list { display: none !important; }
   .navbar__inner { padding: 8px 18px !important; }
