@@ -371,7 +371,7 @@ const PROJECTS_DATA = [
     cover: BASE + "covers/las-golondrinas.png",
     demo: "https://las-golondrinas-caso-estudio.vercel.app/",
     repo: "",
-    stack: ["Figma", "HTML", "CSS"],
+    stack: ["Figma", "HTML", "CSS", "JavaScript", "Claude AI", "Higgsfield AI"],
     featured: false,
   },
   {
@@ -432,6 +432,7 @@ const TECH_ICONS = {
   MongoDB: BASE + "logos/logoMongoDB.png",
   HTML: null,
   "Claude AI": BASE + "logos/logoClaude.png",
+  "Higgsfield AI": BASE + "logos/logoHiggsfield.svg",
 };
 
 const SKILLS = [
