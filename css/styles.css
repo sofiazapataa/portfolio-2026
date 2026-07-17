@@ -364,7 +364,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
    ========================================================================== */
 #projects { padding: clamp(48px, 8vh, 88px) 0 clamp(32px, 6vh, 64px); }
 .coverflow-stage {
-  position: relative; width: 100%; height: clamp(560px, 74vh, 680px); perspective: 1400px;
+  position: relative; width: 100%; height: clamp(620px, 80vh, 740px); perspective: 1400px;
   overflow: hidden; margin-bottom: 24px;
 }
 .project-card {
@@ -405,7 +405,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 }
 .project-card__btn:hover { transform: translateY(-1px); }
 
-.coverflow-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 8px; }
+.coverflow-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 28px; }
 .coverflow-arrow {
   width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border);
   color: var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: var(--sh-1);
@@ -433,7 +433,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .video-skills__eyebrow { background: rgba(245, 242, 234, 0.06); border: 1px solid #000; color: var(--bg); }
 .video-skills__title { color: var(--bg); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); font-size: clamp(28px, 3.6vw, 44px); }
 .video-skills__title .section-title-serif { color: var(--accent); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18); }
-.video-skills__subtitle { color: rgba(0, 0, 0, 0.72); }
+.video-skills__subtitle { color: rgba(245, 242, 234, 0.72); }
 .marquee-viewport--dark {
   mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.35) 3%, black 14%, black 86%, rgba(0, 0, 0, 0.35) 97%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.35) 3%, black 14%, black 86%, rgba(0, 0, 0, 0.35) 97%, transparent 100%);
@@ -456,7 +456,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
   gap: 8px; font-family: var(--font-mono); font-size: 11px; color: rgba(245, 242, 234, 0.55); letter-spacing: 0.06em; position: relative;
 }
 .video-skills__hint-text {
-  color: rgba(0, 0, 0, 0.55); text-underline-offset: 4px; text-decoration: underline; text-decoration-color: transparent;
+  color: rgba(245, 242, 234, 0.55); text-underline-offset: 4px; text-decoration: underline; text-decoration-color: transparent;
   text-decoration-thickness: 1.5px; transition: text-decoration-color var(--t-fast);
 }
 .video-skills__hint:hover .video-skills__hint-text { text-decoration-color: var(--accent); }
