@@ -420,7 +420,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
    Video skills (dark section)
    ========================================================================== */
 #video-skills {
-  background: var(--ink); color: var(--bg); padding: clamp(56px, 9vh, 96px) 0;
+  background: #0d0d0e; color: #f5f4ef; padding: clamp(56px, 9vh, 96px) 0;
   margin: clamp(24px, 4vh, 48px) 0; overflow: hidden; position: relative;
   border-radius: clamp(20px, 3vw, 32px); box-shadow: 0 30px 80px rgba(10, 10, 10, 0.12);
 }
@@ -430,8 +430,8 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 }
 .video-skills__vignette { position: absolute; inset: 0; background: radial-gradient(120% 140% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.4) 100%); pointer-events: none; mix-blend-mode: multiply; }
 .video-skills__head { max-width: 1180px; margin: 0 auto 36px; padding: 0 20px; text-align: center; position: relative; }
-.video-skills__eyebrow { background: rgba(245, 242, 234, 0.06); border: 1px solid #000; color: var(--bg); }
-.video-skills__title { color: var(--bg); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); font-size: clamp(28px, 3.6vw, 44px); }
+.video-skills__eyebrow { background: rgba(245, 242, 234, 0.06); border: 1px solid rgba(245, 242, 234, 0.25); color: #f5f4ef; }
+.video-skills__title { color: #f5f4ef; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); font-size: clamp(28px, 3.6vw, 44px); }
 .video-skills__title .section-title-serif { color: var(--accent); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18); }
 .video-skills__subtitle { color: rgba(245, 242, 234, 0.72); }
 .marquee-viewport--dark {
@@ -450,7 +450,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .marquee-item--dark:hover { border-color: rgba(255, 122, 85, 0.55); background: #2a2a34; transform: translateY(-2px); }
 .marquee-item--dark .marquee-icon-wrap { width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 255, 255, 0.94); }
 .marquee-item--dark .marquee-icon { width: 26px; height: 26px; }
-.marquee-item--dark .marquee-name { font-size: 14.5px; color: var(--bg); }
+.marquee-item--dark .marquee-name { font-size: 14.5px; color: #f5f4ef; }
 .video-skills__hint {
   max-width: 1180px; margin: 20px auto 0; padding: 0 20px; display: flex; justify-content: center; align-items: center;
   gap: 8px; font-family: var(--font-mono); font-size: 11px; color: rgba(245, 242, 234, 0.55); letter-spacing: 0.06em; position: relative;
