@@ -193,9 +193,11 @@
 
     videos.forEach((v, i) => {
       const m = REEL_MEDIA[i];
+      // Si faltara el medio, salteamos esa pieza en vez de romper toda la grilla.
+      if (!m) return;
       const el = document.createElement("div");
 
-      if (m && m.clips) {
+      if (m.clips) {
         const strip = v.clips
           .map((c, k) =>
             '<li class="reel__clip">' +
