@@ -97,7 +97,10 @@ const TRANSLATIONS = {
       ],
       reelsEyebrow: "Últimas piezas",
       reelsTitle: "Ejemplos recientes",
-      reelsHint: "2 piezas",
+      reelsHint: "3 proyectos",
+      playLabel: "Reproducir",
+      campaignTag: "Campaña · 3 piezas",
+      campaignPiecesLabel: "Piezas de la campaña",
       aiTag: "Generado con IA",
       processLabel: "Cómo se hizo:",
       btnDetail: "Ver detalle",
@@ -118,8 +121,22 @@ const TRANSLATIONS = {
       },
       videos: [
         {
+          title: "Furlo",
+          duration: "3 piezas · Vertical 9:16",
+          desc: "Campaña de 3 piezas para un guante quita-pelos de mascotas.",
+          summary:
+            "Campaña completa para una marca ficticia de accesorios para mascotas: tres piezas pensadas como una sola secuencia de embudo. La primera abre con el problema (el sillón lleno de pelo), la segunda lo valida con una pieza tipo UGC en un living real, y la tercera cierra con el producto en primer plano. Comparten paleta, tipografía, ritmo de corte y personaje, así que funcionan sueltas en el feed pero se leen como una campaña.",
+          process:
+            "Definición del embudo y del guion de las tres piezas, diseño del producto y de los sets con IA de imagen para mantener el mismo guante y el mismo living en todos los planos, generación de cada plano en video a partir de esas referencias, y armado final en CapCut con una misma paleta de subtítulos, ritmo y música.",
+          clips: [
+            { step: "01", role: "Gancho", duration: "0:18", note: "Abre con el problema: el sillón cubierto de pelo y el antes y después en pocos segundos." },
+            { step: "02", role: "UGC", duration: "0:18", note: "Pieza tipo testimonial en un living real, con el producto en uso sobre el perro." },
+            { step: "03", role: "Producto", duration: "0:20", note: "Cierre en clave de producto: planos detalle del guante, textura y terminación." },
+          ],
+        },
+        {
           title: "Kyvrapets",
-          duration: "0:30 · Vertical 9:16",
+          duration: "0:28 · Vertical 9:16",
           desc: "Mascota animada para una marca de cuidado dental canino.",
           summary:
             "Pieza de branded content para una marca ficticia de cuidado dental canino: diseño de una mascota 3D generada con IA, guion con gancho, problema, producto en acción y validación veterinaria, y montaje final con subtítulos y música.",
@@ -128,7 +145,7 @@ const TRANSLATIONS = {
         },
         {
           title: "PlataClara",
-          duration: "0:35 · Vertical 9:16",
+          duration: "0:30 · Vertical 9:16",
           desc: "Explicador de finanzas personales con mascota propia.",
           summary:
             "Mascota y contenido original para una marca ficticia de finanzas personales: un personaje propio (Pipo, la ardilla) explicando la regla de ahorro 50/30/20 con una metáfora visual clara, pensado como pieza de storytelling de marca.",
@@ -272,7 +289,10 @@ const TRANSLATIONS = {
       ],
       reelsEyebrow: "Latest pieces",
       reelsTitle: "Recent examples",
-      reelsHint: "2 pieces",
+      reelsHint: "3 projects",
+      playLabel: "Play",
+      campaignTag: "Campaign · 3 pieces",
+      campaignPiecesLabel: "Pieces in the campaign",
       aiTag: "AI-generated",
       processLabel: "How it was made:",
       btnDetail: "View details",
@@ -293,8 +313,22 @@ const TRANSLATIONS = {
       },
       videos: [
         {
+          title: "Furlo",
+          duration: "3 pieces · Vertical 9:16",
+          desc: "A three-piece campaign for a pet hair removal glove.",
+          summary:
+            "Full campaign for a fictional pet accessories brand: three pieces built as a single funnel. The first opens on the problem (a couch covered in hair), the second backs it up with a UGC-style piece shot in a real living room, and the third closes on the product itself. They share palette, typography, cutting rhythm and cast, so they work on their own in the feed but read as one campaign.",
+          process:
+            "Defined the funnel and the script for all three pieces, designed the product and the sets with AI image tools so the same glove and the same living room carry across every shot, generated each shot as video from those references, and assembled the final edits in CapCut with a shared caption style, pacing and music.",
+          clips: [
+            { step: "01", role: "Hook", duration: "0:18", note: "Opens on the problem: a couch covered in hair, with a before and after in a few seconds." },
+            { step: "02", role: "UGC", duration: "0:18", note: "Testimonial-style piece in a real living room, with the product in use on the dog." },
+            { step: "03", role: "Product", duration: "0:20", note: "A product-led close: detail shots of the glove, its texture and finish." },
+          ],
+        },
+        {
           title: "Kyvrapets",
-          duration: "0:30 · Vertical 9:16",
+          duration: "0:28 · Vertical 9:16",
           desc: "Animated mascot for a dog dental care brand.",
           summary:
             "Branded content piece for a fictional dog dental care brand: a 3D AI-generated mascot, a script built around a hook, a problem, the product in action and vet validation, and a final edit with captions and music.",
@@ -303,7 +337,7 @@ const TRANSLATIONS = {
         },
         {
           title: "PlataClara",
-          duration: "0:35 · Vertical 9:16",
+          duration: "0:30 · Vertical 9:16",
           desc: "Personal finance explainer with an original mascot.",
           summary:
             "Original mascot and content for a fictional personal finance brand: a character of my own (Pipo the squirrel) explaining the 50/30/20 savings rule through a clear visual metaphor, built as a brand storytelling piece.",
@@ -460,14 +494,34 @@ const CERTIFICATES = [
   { title: "Desarrollo Web", org: "CoderHouse", year: "2025", img: BASE + "certificates/certificado-desarrolloWeb.png" },
 ];
 
-const REEL_COVERS = [
-  "./uploads/hf_20260709_232147_60d5269c-7129-42e1-9870-a448ce3d5b8e.png",
-  "./uploads/hf_20260711_155555_17f40d34-b102-4833-9e41-3adf4fe509e6.png",
-];
-
-const REEL_POSTERS = [
-  { bg: "linear-gradient(135deg, #2a1a1a 0%, #3a1e18 100%)", accent: "rgba(255, 140, 90, 0.55)" },
-  { bg: "linear-gradient(135deg, #1a2530 0%, #223247 100%)", accent: "rgba(120, 170, 255, 0.4)" },
+// Medios de cada pieza. El índice se corresponde con videoEditing.videos:
+// los textos viven en t.<idioma> (se traducen), los archivos viven acá (no).
+// Una pieza con "clips" es una campaña de varias partes.
+const REEL_MEDIA = [
+  {
+    cover: BASE + "covers/furlo-01-hook.webp",
+    bg: "linear-gradient(135deg, #16212b 0%, #1e3140 100%)",
+    accent: "rgba(120, 190, 255, 0.42)",
+    clips: [
+      { video: BASE + "videos/furlo-01-hook.mp4", poster: BASE + "covers/furlo-01-hook.webp" },
+      { video: BASE + "videos/furlo-02-ugc.mp4", poster: BASE + "covers/furlo-02-ugc.webp" },
+      { video: BASE + "videos/furlo-03-producto.mp4", poster: BASE + "covers/furlo-03-producto.webp" },
+    ],
+  },
+  {
+    cover: "./uploads/hf_20260709_232147_60d5269c-7129-42e1-9870-a448ce3d5b8e.png",
+    bg: "linear-gradient(135deg, #2a1a1a 0%, #3a1e18 100%)",
+    accent: "rgba(255, 140, 90, 0.55)",
+    video: BASE + "videos/kyvrapets.mp4",
+    poster: "./uploads/hf_20260709_232147_60d5269c-7129-42e1-9870-a448ce3d5b8e.png",
+  },
+  {
+    cover: "./uploads/hf_20260711_155555_17f40d34-b102-4833-9e41-3adf4fe509e6.png",
+    bg: "linear-gradient(135deg, #1a2530 0%, #223247 100%)",
+    accent: "rgba(120, 170, 255, 0.4)",
+    video: BASE + "videos/plataclara.mp4",
+    poster: "./uploads/hf_20260711_155555_17f40d34-b102-4833-9e41-3adf4fe509e6.png",
+  },
 ];
 
 const VIDEO_STACK = ["Higgsfield AI", "Kling 3.0", "Nano Banana Pro", "CapCut"];

@@ -140,55 +140,136 @@
   // ---------------------------------------------------------------------
   // Reels
   // ---------------------------------------------------------------------
+  function escapeAttr(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  }
+
+  // Monta el <video> recién al hacer click: la página no descarga nada hasta
+  // que se pide, y el click es el gesto que el navegador exige para reproducir.
+  function playInline(media, src, poster) {
+    if (!src || media.querySelector("video")) return;
+    const video = document.createElement("video");
+    video.className = "reel__video";
+    video.src = src;
+    if (poster) video.poster = poster;
+    video.controls = true;
+    video.preload = "auto";
+    video.setAttribute("playsinline", "");
+    media.appendChild(video);
+    media.classList.add("is-playing");
+    video.play().catch(() => {});
+  }
+
+  function reelFrame(i, clipIndex, cover, alt, overlay, extraClass) {
+    return (
+      '<div class="reel__media' +
+      (extraClass ? " " + extraClass : "") +
+      '" data-play-index="' +
+      i +
+      '"' +
+      (clipIndex === null ? "" : ' data-clip-index="' + clipIndex + '"') +
+      ">" +
+      '<img class="reel__cover" src="' +
+      cover +
+      '" alt="' +
+      escapeAttr(alt) +
+      '" loading="lazy">' +
+      '<div class="reel__scrim"></div>' +
+      '<button class="reel__play" type="button" aria-label="' +
+      escapeAttr(T().videoEditing.playLabel + " " + alt) +
+      '">' +
+      svgPlay +
+      "</button>" +
+      overlay +
+      "</div>"
+    );
+  }
+
   function renderReels() {
     const container = document.getElementById("reelsGrid");
-    const videos = T().videoEditing.videos;
+    const tx = T().videoEditing;
+    const videos = tx.videos;
     container.innerHTML = "";
+
     videos.forEach((v, i) => {
+      const m = REEL_MEDIA[i];
       const el = document.createElement("div");
-      el.className = "reel";
-      el.innerHTML =
-        '<div class="reel__media" data-video-index="' +
-        i +
-        '">' +
-        '<img class="reel__cover" src="' +
-        REEL_COVERS[i] +
-        '" alt="' +
-        v.title +
-        '">' +
-        '<div class="reel__scrim"></div>' +
-        '<button class="reel__play" aria-label="Ver ' +
-        v.title +
-        '" type="button" data-video-index="' +
-        i +
-        '">' +
-        svgPlay +
-        "</button>" +
-        '<span class="reel__badge"><span class="reel__badge-dot"></span>' +
-        T().videoEditing.aiTag +
-        "</span>" +
-        '<div class="reel__info"><div class="reel__title">' +
-        v.title +
-        '</div><div class="reel__duration">' +
-        v.duration +
-        "</div></div>" +
-        "</div>" +
-        '<div><p class="reel__caption">' +
-        v.desc +
-        '</p><button class="reel__more" type="button" data-video-index="' +
-        i +
-        '">' +
-        T().videoEditing.btnDetail +
-        " " +
-        svgArrowRight +
-        "</button></div>";
+
+      if (m && m.clips) {
+        const strip = v.clips
+          .map((c, k) =>
+            '<li class="reel__clip">' +
+            reelFrame(
+              i,
+              k,
+              m.clips[k].poster,
+              v.title + " — " + c.role,
+              '<span class="reel__step">' + c.step + "</span>" +
+                '<span class="reel__time">' + c.duration + "</span>",
+              "reel__media--sm"
+            ) +
+            '<div class="reel__clip-role">' + c.role + "</div>" +
+            '<p class="reel__clip-note">' + c.note + "</p>" +
+            "</li>"
+          )
+          .join("");
+
+        el.className = "reel reel--campaign";
+        el.innerHTML =
+          '<div class="reel__campaign-head">' +
+          '<span class="reel__campaign-tag">' + tx.campaignTag + "</span>" +
+          '<div class="reel__campaign-title">' + v.title + "</div>" +
+          '<p class="reel__caption">' + v.desc + "</p>" +
+          "</div>" +
+          '<ol class="reel__strip">' + strip + "</ol>" +
+          '<button class="reel__more" type="button" data-detail-index="' + i + '">' +
+          tx.btnDetail + " " + svgArrowRight +
+          "</button>";
+      } else {
+        el.className = "reel";
+        el.innerHTML =
+          reelFrame(
+            i,
+            null,
+            m.cover,
+            v.title,
+            '<span class="reel__badge"><span class="reel__badge-dot"></span>' +
+              tx.aiTag +
+              "</span>" +
+              '<div class="reel__info"><div class="reel__title">' +
+              v.title +
+              '</div><div class="reel__duration">' +
+              v.duration +
+              "</div></div>",
+            ""
+          ) +
+          '<div><p class="reel__caption">' +
+          v.desc +
+          '</p><button class="reel__more" type="button" data-detail-index="' + i + '">' +
+          tx.btnDetail +
+          " " +
+          svgArrowRight +
+          "</button></div>";
+      }
+
       container.appendChild(el);
     });
 
-    container.querySelectorAll("[data-video-index]").forEach((el) => {
+    container.querySelectorAll("[data-play-index]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const i = parseInt(el.getAttribute("data-play-index"), 10);
+        const m = REEL_MEDIA[i];
+        if (!m) return;
+        const raw = el.getAttribute("data-clip-index");
+        const clip = raw === null ? null : m.clips[parseInt(raw, 10)];
+        playInline(el, clip ? clip.video : m.video, clip ? clip.poster : m.poster);
+      });
+    });
+
+    container.querySelectorAll("[data-detail-index]").forEach((el) => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
-        openVideoModal(parseInt(el.getAttribute("data-video-index"), 10));
+        openVideoModal(parseInt(el.getAttribute("data-detail-index"), 10), 0);
       });
     });
   }
@@ -424,28 +505,80 @@
     }
   }
 
-  function openVideoModal(i) {
+  // Renderiza el selector de piezas cuando el proyecto es una campaña.
+  function renderModalClips(i, active) {
+    const wrap = document.getElementById("modalVideoClips");
+    const m = REEL_MEDIA[i];
     const v = T().videoEditing.videos[i];
-    const poster = REEL_POSTERS[i];
-    setVideoModalPlayer(null);
-    document.getElementById("modalVideoMedia").style.background = poster.bg;
+    if (!m || !m.clips) {
+      wrap.hidden = true;
+      return;
+    }
+    wrap.hidden = false;
+    document.getElementById("modalVideoClipsLabel").textContent = T().videoEditing.campaignPiecesLabel;
+    document.getElementById("modalVideoClipNote").textContent = v.clips[active].note;
+
+    const list = document.getElementById("modalVideoClipsList");
+    list.innerHTML = v.clips
+      .map(
+        (c, k) =>
+          '<button class="modal__clip' +
+          (k === active ? " is-active" : "") +
+          '" type="button" data-clip="' +
+          k +
+          '"><img src="' +
+          m.clips[k].poster +
+          '" alt=""><span><b>' +
+          c.step +
+          "</b> " +
+          c.role +
+          "</span></button>"
+      )
+      .join("");
+
+    list.querySelectorAll("[data-clip]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openVideoModal(i, parseInt(btn.getAttribute("data-clip"), 10));
+      });
+    });
+  }
+
+  function openVideoModal(i, clipIndex) {
+    const v = T().videoEditing.videos[i];
+    const m = REEL_MEDIA[i];
+    const isCampaign = !!(m && m.clips);
+    const k = isCampaign ? clipIndex || 0 : 0;
+
+    document.getElementById("modalVideoMedia").style.background = m.bg;
     document.getElementById("modalVideoGlow").style.background =
-      "radial-gradient(60% 60% at 50% 45%, " + poster.accent + " 0%, transparent 70%)";
+      "radial-gradient(60% 60% at 50% 45%, " + m.accent + " 0%, transparent 70%)";
+
+    // Antes acá iba setVideoModalPlayer(null): el modal abría sin ningún
+    // archivo cargado y por eso el play nunca reproducía nada.
+    setVideoModalPlayer(
+      isCampaign ? m.clips[k].video : m.video,
+      isCampaign ? m.clips[k].poster : m.poster
+    );
+
     document.getElementById("modalVideoTitle").textContent = v.title;
     document.getElementById("modalVideoTitle2").textContent = v.title;
-    document.getElementById("modalVideoDuration").textContent = v.duration;
+    document.getElementById("modalVideoDuration").textContent = isCampaign
+      ? v.clips[k].duration + " · " + v.clips[k].role
+      : v.duration;
     document.getElementById("modalVideoSummary").textContent = v.summary;
     document.getElementById("modalVideoProcess").textContent = v.process;
     document.getElementById("modalVideoStack").innerHTML = VIDEO_STACK.map((s) => "<span>" + s + "</span>").join("");
     document.getElementById("modalVideoAiTag").textContent = T().videoEditing.aiTag;
     document.getElementById("modalVideoActions").hidden = true;
 
+    renderModalClips(i, k);
     showOverlay("videoModalOverlay");
   }
 
   function openVideoHeroModal() {
     const h = T().videoEditing.hero;
     setVideoModalPlayer(VIDEO_HERO_MEDIA.video, VIDEO_HERO_MEDIA.poster);
+    document.getElementById("modalVideoClips").hidden = true;
     document.getElementById("modalVideoTitle").textContent = h.title;
     document.getElementById("modalVideoTitle2").textContent = h.title;
     document.getElementById("modalVideoDuration").textContent = h.duration;
