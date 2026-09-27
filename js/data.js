@@ -59,6 +59,8 @@ const TRANSLATIONS = {
           "Rediseño UX/UI del flujo de reservas de una posada y spa en Sierra de la Ventana — de una web informativa a un recorrido guiado con reserva demostrativa en seis pasos.",
         "Tienda Multiskin":
           "Catálogo de una tienda de cosmética vegana con backend, autenticación y panel de administración. Es el proyecto más completo del portfolio y combina frontend, backend y presentación visual.",
+        "Finanzas en pareja":
+          "App para que una pareja organice un fondo común, gastos y objetivos compartidos, con perfil individual por persona. Cuentas e invitaciones reales con Supabase (autenticación, base de datos y reglas de acceso), y empaquetada con Capacitor para poder subirla a las tiendas.",
       },
     },
     videoEditing: {
@@ -230,6 +232,8 @@ const TRANSLATIONS = {
           "UX/UI redesign of the booking flow for an inn and spa in Sierra de la Ventana — from an informational website to a guided journey with a six-step demo reservation.",
         "Tienda Multiskin":
           "Catalog for a vegan cosmetics store with backend, authentication and admin panel. The most complete project in the portfolio, combining frontend, backend and visual presentation.",
+        "Finanzas en pareja":
+          "App for couples to organize a shared fund, expenses and goals, with an individual profile for each person. Real accounts and invitations powered by Supabase (auth, database and access rules), packaged with Capacitor for app store distribution.",
       },
     },
     videoEditing: {
@@ -371,6 +375,15 @@ const PROJECTS_DATA = [
     demo: "https://catalogo-cosmos-2-0.vercel.app/",
     repo: "https://github.com/sofiazapataa/catalogo-cosmos-2.0.git",
     stack: ["CSS", "React", "Figma", "Node", "Express", "MongoDB"],
+    featured: true,
+  },
+  {
+    title: "Finanzas en pareja",
+    type: "UX/UI Design, Full Stack",
+    cover: BASE + "covers/finanzas-en-pareja.png",
+    demo: "https://finanzas-en-pareja-green.vercel.app/",
+    repo: "https://github.com/sofiazapataa/finanzas-en-pareja.git",
+    stack: ["Figma", "JavaScript", "HTML", "CSS", "Supabase"],
     featured: true,
   },
 ];
