@@ -30,37 +30,6 @@ const TRANSLATIONS = {
       i7: "UI Design",
       i8: "Design Systems",
     },
-    focusAreas: {
-      eyebrow: "Áreas principales",
-      title: "Dos líneas de trabajo, un mismo portfolio",
-      intro:
-        "Trabajo tanto en desarrollo web como en edición de video. Las dos áreas forman parte de mi perfil y de lo que hoy quiero ofrecer de forma freelance.",
-      devTag: "Desarrollo web",
-      devTitle: "Interfaces, sitios y experiencia visual",
-      devText:
-        "Desarrollo portfolios, landing pages, catálogos y experiencias frontend donde priorizo claridad visual, estructura y responsive.",
-      devList: ["React y maquetado responsive", "Portfolios, landings y catálogos", "Diseño UI con foco visual"],
-      devBtn: "Ver proyectos web",
-      videoTag: "Edición de video",
-      videoTitle: "Contenido audiovisual para redes y marcas",
-      videoText:
-        "También trabajo en edición de piezas visuales y videos cortos pensados para comunicar mejor una marca, producto o proyecto.",
-      videoList: ["Reels y contenido para redes", "Videos promocionales", "Ritmo, orden visual y estética"],
-      videoBtn: "Ver edición de video",
-    },
-    about: {
-      eyebrow: "Sobre mí",
-      titlePart1: "Lo que aporto",
-      titlePart2: "a un proyecto",
-      intro:
-        "Soy Sofía, desarrolladora frontend en formación. Me enfoco en combinar React, diseño visual y una estructura clara para crear sitios web modernos, bien presentados y fáciles de usar.",
-      cards: [
-        { num: "01", title: "Frontend", text: "Desarrollo interfaces claras, prolijas y responsive con foco en una buena experiencia visual." },
-        { num: "02", title: "Diseño UI", text: "Me interesa que cada web comunique mejor una marca, proyecto o producto desde lo visual." },
-        { num: "03", title: "Freelance", text: "Busco trabajar en proyectos donde pueda aportar diseño, estructura y una presentación más profesional." },
-      ],
-      chips: ["UI visualmente cuidada", "Responsive", "Contenido digital"],
-    },
     skills: {
       eyebrow: "Skills",
       title: "Tecnologías y herramientas",
@@ -90,12 +59,6 @@ const TRANSLATIONS = {
           "Rediseño UX/UI del flujo de reservas de una posada y spa en Sierra de la Ventana — de una web informativa a un recorrido guiado con reserva demostrativa en seis pasos.",
         "Tienda Multiskin":
           "Catálogo de una tienda de cosmética vegana con backend, autenticación y panel de administración. Es el proyecto más completo del portfolio y combina frontend, backend y presentación visual.",
-        "Tienda Skincare":
-          "Cuestionario de piel y recomendación de productos con una experiencia visual simple, clara y enfocada en la navegación.",
-        "Tienda de Café": "E-commerce simple de café con filtros y búsqueda de productos orientado a una navegación clara.",
-        "Tienda de Bebidas":
-          "Catálogo de bebidas con cards y detalle de producto, desarrollado con Sass y pensado para una estética más comercial.",
-        "Tienda Safaris": "Catálogo visual de safaris con cards y detalle de producto, diseñado para una navegación simple y atractiva.",
       },
     },
     videoEditing: {
@@ -198,7 +161,6 @@ const TRANSLATIONS = {
     floatingCV: { label: "Descargar CV" },
     nav: [
       { label: "Proyectos", id: "projects" },
-      { label: "Sobre mí", id: "about" },
       { label: "Skills", id: "skills" },
       { label: "Video", id: "video-editing" },
       { label: "Contacto", id: "contact" },
@@ -239,36 +201,6 @@ const TRANSLATIONS = {
       i7: "UI Design",
       i8: "Design Systems",
     },
-    focusAreas: {
-      eyebrow: "Main areas",
-      title: "Two lines of work, one portfolio",
-      intro: "I work in both web development and video editing. Both areas are part of my profile and what I offer as a freelancer.",
-      devTag: "Web development",
-      devTitle: "Interfaces, websites and visual experience",
-      devText:
-        "I develop portfolios, landing pages, catalogs and frontend experiences where I prioritize visual clarity, structure and responsiveness.",
-      devList: ["React and responsive layouts", "Portfolios, landings and catalogs", "UI design with visual focus"],
-      devBtn: "See web projects",
-      videoTag: "Video editing",
-      videoTitle: "Audiovisual content for social media and brands",
-      videoText:
-        "I also work on editing visual pieces and short videos designed to better communicate a brand, product or project.",
-      videoList: ["Reels and social media content", "Promotional videos", "Rhythm, visual order and aesthetics"],
-      videoBtn: "See video editing",
-    },
-    about: {
-      eyebrow: "About me",
-      titlePart1: "What I bring",
-      titlePart2: "to a project",
-      intro:
-        "I'm Sofía, a frontend developer in training. I focus on combining React, visual design and clear structure to create modern, well-presented and easy-to-use websites.",
-      cards: [
-        { num: "01", title: "Frontend", text: "I develop clear, neat and responsive interfaces focused on a good visual experience." },
-        { num: "02", title: "UI Design", text: "I care about each website visually communicating a brand, project or product more effectively." },
-        { num: "03", title: "Freelance", text: "I look to work on projects where I can contribute design, structure and a more professional presentation." },
-      ],
-      chips: ["Visually polished UI", "Responsive", "Digital content"],
-    },
     skills: {
       eyebrow: "Skills",
       title: "Technologies & tools",
@@ -298,11 +230,6 @@ const TRANSLATIONS = {
           "UX/UI redesign of the booking flow for an inn and spa in Sierra de la Ventana — from an informational website to a guided journey with a six-step demo reservation.",
         "Tienda Multiskin":
           "Catalog for a vegan cosmetics store with backend, authentication and admin panel. The most complete project in the portfolio, combining frontend, backend and visual presentation.",
-        "Tienda Skincare": "Skin quiz and product recommendation with a simple, clear visual experience focused on navigation.",
-        "Tienda de Café": "Simple coffee e-commerce with product filters and search, focused on clear navigation.",
-        "Tienda de Bebidas":
-          "Beverage catalog with cards and product detail, built with Sass and designed for a more commercial aesthetic.",
-        "Tienda Safaris": "Visual safari catalog with cards and product detail, designed for simple and attractive navigation.",
       },
     },
     videoEditing: {
@@ -404,7 +331,6 @@ const TRANSLATIONS = {
     floatingCV: { label: "Download CV" },
     nav: [
       { label: "Projects", id: "projects" },
-      { label: "About", id: "about" },
       { label: "Skills", id: "skills" },
       { label: "Video", id: "video-editing" },
       { label: "Contact", id: "contact" },
@@ -446,42 +372,6 @@ const PROJECTS_DATA = [
     repo: "https://github.com/sofiazapataa/catalogo-cosmos-2.0.git",
     stack: ["CSS", "React", "Figma", "Node", "Express", "MongoDB"],
     featured: true,
-  },
-  {
-    title: "Tienda Skincare",
-    type: "Frontend",
-    cover: BASE + "covers/tiendaSkinCare.png",
-    demo: "https://react-entrega02.vercel.app/",
-    repo: "",
-    stack: ["JavaScript", "CSS"],
-    featured: false,
-  },
-  {
-    title: "Tienda de Café",
-    type: "Frontend",
-    cover: BASE + "covers/cafe.png",
-    demo: "",
-    repo: "",
-    stack: ["Figma", "CSS"],
-    featured: false,
-  },
-  {
-    title: "Tienda de Bebidas",
-    type: "Frontend",
-    cover: BASE + "covers/bebidas.png",
-    demo: "",
-    repo: "",
-    stack: ["CSS", "Sass"],
-    featured: false,
-  },
-  {
-    title: "Tienda Safaris",
-    type: "Frontend",
-    cover: BASE + "covers/tienda-safaris.png",
-    demo: "",
-    repo: "",
-    stack: ["Figma", "CSS"],
-    featured: false,
   },
 ];
 

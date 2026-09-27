@@ -13,6 +13,13 @@
     '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>';
   const svgPlay = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#0a0a0a" style="margin-left:3px;"><path d="M8 5v14l11-7z"></path></svg>';
 
+  const VE_SERVICE_ICONS = [
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 15h4M17 15h4"></path></svg>',
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 001 1h2l4 4V6L6 10H4a1 1 0 00-1 1z"></path><path d="M15 8a3 3 0 010 8"></path><path d="M18 5a7 7 0 010 14"></path></svg>',
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v2M8 8v10M12 5v16M16 9v8M20 11v4"></path></svg>',
+    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M11 18h2"></path></svg>',
+  ];
+
   function T() {
     return TRANSLATIONS[state.lang];
   }
@@ -107,11 +114,10 @@
     const items = T().videoEditing.items;
     container.innerHTML = "";
     items.forEach((text, i) => {
-      const num = String(i + 1).padStart(2, "0");
       const el = document.createElement("div");
       el.className = "ve-service";
       el.innerHTML =
-        '<div class="ve-service__num">' + num + '</div><p class="ve-service__text">' + text + "</p>";
+        '<span class="ve-service__icon">' + (VE_SERVICE_ICONS[i] || "") + '</span><span class="ve-service__text">' + text + "</span>";
       container.appendChild(el);
     });
   }
@@ -682,7 +688,7 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    const sectionIds = ["focus-areas", "about", "skills", "projects", "video-skills", "video-editing", "contact"];
+    const sectionIds = ["skills", "projects", "video-skills", "video-editing", "contact"];
     const navLinks = document.querySelectorAll(".navbar__link");
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -758,8 +764,6 @@
     document.getElementById("btnCopyLink").addEventListener("click", copyLink);
     document.getElementById("btnScrollProjects").addEventListener("click", () => scrollToId("projects"));
     document.getElementById("btnScrollVideo").addEventListener("click", () => scrollToId("video-editing"));
-    document.querySelectorAll(".btn-scroll-projects").forEach((el) => el.addEventListener("click", () => scrollToId("projects")));
-    document.querySelectorAll(".btn-scroll-video").forEach((el) => el.addEventListener("click", () => scrollToId("video-editing")));
 
     document.querySelectorAll(".navbar__link").forEach((link) => {
       link.addEventListener("click", (e) => {

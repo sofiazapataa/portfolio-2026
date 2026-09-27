@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- ?v= fuerza al navegador a bajar la versión nueva. Subilo al tocar css/js. -->
-<link rel="stylesheet" href="./css/styles.css?v=4">
+<link rel="stylesheet" href="./css/styles.css?v=5">
 </head>
 <body class="sz-body">
 
@@ -19,10 +19,9 @@
     <span class="navbar__brand">Sofía Zapata</span>
     <ul class="navbar__list" id="navList">
       <li><a class="navbar__link" href="#projects" data-nav-target="projects"><span class="navbar__dot"></span><span data-i18n="nav.0.label">Proyectos</span></a></li>
-      <li><a class="navbar__link" href="#about" data-nav-target="about"><span class="navbar__dot"></span><span data-i18n="nav.1.label">Sobre mí</span></a></li>
-      <li><a class="navbar__link" href="#skills" data-nav-target="skills"><span class="navbar__dot"></span><span data-i18n="nav.2.label">Skills</span></a></li>
-      <li><a class="navbar__link" href="#video-editing" data-nav-target="video-editing"><span class="navbar__dot"></span><span data-i18n="nav.3.label">Video</span></a></li>
-      <li><a class="navbar__link" href="#contact" data-nav-target="contact"><span class="navbar__dot"></span><span data-i18n="nav.4.label">Contacto</span></a></li>
+      <li><a class="navbar__link" href="#skills" data-nav-target="skills"><span class="navbar__dot"></span><span data-i18n="nav.1.label">Skills</span></a></li>
+      <li><a class="navbar__link" href="#video-editing" data-nav-target="video-editing"><span class="navbar__dot"></span><span data-i18n="nav.2.label">Video</span></a></li>
+      <li><a class="navbar__link" href="#contact" data-nav-target="contact"><span class="navbar__dot"></span><span data-i18n="nav.3.label">Contacto</span></a></li>
     </ul>
   </div>
 </nav>
@@ -109,87 +108,6 @@
 </div>
 
 <main class="container">
-  <!-- ═══════════════════════ FOCUS AREAS ═══════════════════════ -->
-  <section id="focus-areas" data-reveal>
-    <div class="section-head">
-      <span class="section-eyebrow" data-i18n="focusAreas.eyebrow">Áreas principales</span>
-      <h2 class="section-title" data-i18n="focusAreas.title">Dos líneas de trabajo, un mismo portfolio</h2>
-      <p class="section-intro" data-i18n="focusAreas.intro">Trabajo tanto en desarrollo web como en edición de video. Las dos áreas forman parte de mi perfil y de lo que hoy quiero ofrecer de forma freelance.</p>
-    </div>
-
-    <div class="focus-grid">
-      <article class="focus-card focus-card--light" data-reveal data-reveal-delay="1">
-        <div class="focus-card__index">01 / DEV</div>
-        <span class="focus-card__tag" data-i18n="focusAreas.devTag">Desarrollo web</span>
-        <h3 class="focus-card__title" data-i18n="focusAreas.devTitle">Interfaces, sitios y experiencia visual</h3>
-        <p class="focus-card__text" data-i18n="focusAreas.devText">Desarrollo portfolios, landing pages, catálogos y experiencias frontend donde priorizo claridad visual, estructura y responsive.</p>
-        <ul class="focus-card__list">
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.0">React y maquetado responsive</span></li>
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.1">Portfolios, landings y catálogos</span></li>
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.devList.2">Diseño UI con foco visual</span></li>
-        </ul>
-        <button class="focus-card__btn btn-scroll-projects" type="button">
-          <span data-i18n="focusAreas.devBtn">Ver proyectos web</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-        </button>
-      </article>
-
-      <article class="focus-card focus-card--dark" data-reveal data-reveal-delay="2">
-        <div class="focus-card__glow"></div>
-        <div class="focus-card__index">02 / VIDEO</div>
-        <span class="focus-card__tag" data-i18n="focusAreas.videoTag">Edición de video</span>
-        <h3 class="focus-card__title" data-i18n="focusAreas.videoTitle">Contenido audiovisual para redes y marcas</h3>
-        <p class="focus-card__text" data-i18n="focusAreas.videoText">También trabajo en edición de piezas visuales y videos cortos pensados para comunicar mejor una marca, producto o proyecto.</p>
-        <ul class="focus-card__list">
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.0">Reels y contenido para redes</span></li>
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.1">Videos promocionales</span></li>
-          <li class="focus-card__list-item"><span class="focus-card__list-dot"></span><span data-i18n="focusAreas.videoList.2">Ritmo, orden visual y estética</span></li>
-        </ul>
-        <button class="focus-card__btn btn-scroll-video" type="button">
-          <span data-i18n="focusAreas.videoBtn">Ver edición de video</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-        </button>
-      </article>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
-  <section id="about" data-reveal>
-    <div class="about-head">
-      <div>
-        <span class="section-eyebrow" data-i18n="about.eyebrow">Sobre mí</span>
-        <h2 class="about-head__title"><span data-i18n="about.titlePart1">Lo que aporto</span> <span class="section-title-serif" data-i18n="about.titlePart2">a un proyecto</span></h2>
-      </div>
-      <div class="about-head__intro-col">
-        <p class="about-head__intro" data-i18n="about.intro">Soy Sofía, desarrolladora frontend en formación. Me enfoco en combinar React, diseño visual y una estructura clara para crear sitios web modernos, bien presentados y fáciles de usar.</p>
-      </div>
-    </div>
-
-    <div class="about-cards">
-      <article class="about-card" data-reveal data-reveal-delay="1">
-        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.0.num">01</span><span class="about-card__bar"></span></div>
-        <h3 class="about-card__title" data-i18n="about.cards.0.title">Frontend</h3>
-        <p class="about-card__text" data-i18n="about.cards.0.text">Desarrollo interfaces claras, prolijas y responsive con foco en una buena experiencia visual.</p>
-      </article>
-      <article class="about-card" data-reveal data-reveal-delay="2">
-        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.1.num">02</span><span class="about-card__bar"></span></div>
-        <h3 class="about-card__title" data-i18n="about.cards.1.title">Diseño UI</h3>
-        <p class="about-card__text" data-i18n="about.cards.1.text">Me interesa que cada web comunique mejor una marca, proyecto o producto desde lo visual.</p>
-      </article>
-      <article class="about-card" data-reveal data-reveal-delay="3">
-        <div class="about-card__top"><span class="about-card__num" data-i18n="about.cards.2.num">03</span><span class="about-card__bar"></span></div>
-        <h3 class="about-card__title" data-i18n="about.cards.2.title">Freelance</h3>
-        <p class="about-card__text" data-i18n="about.cards.2.text">Busco trabajar en proyectos donde pueda aportar diseño, estructura y una presentación más profesional.</p>
-      </article>
-    </div>
-
-    <div class="about-chips">
-      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.0">UI visualmente cuidada</span></span>
-      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.1">Responsive</span></span>
-      <span class="chip"><span class="chip__dot"></span><span data-i18n="about.chips.2">Contenido digital</span></span>
-    </div>
-  </section>
-
   <!-- ═══════════════════════ SKILLS (marquee) ═══════════════════════ -->
   <section id="skills" data-reveal>
     <div class="section-head">
@@ -471,7 +389,7 @@
 <!-- Copied toast -->
 <div class="toast" id="copiedToast" role="status" aria-live="polite" hidden>✓ <span data-i18n="banner.btnCopied">¡Link copiado!</span></div>
 
-<script src="./js/data.js?v=4"></script>
-<script src="./js/app.js?v=4"></script>
+<script src="./js/data.js?v=5"></script>
+<script src="./js/app.js?v=5"></script>
 </body>
 </html>
