@@ -4,11 +4,15 @@ const BASE = "./assets/";
 const TRANSLATIONS = {
   es: {
     banner: {
-      eyebrow: "Disponible para trabajos freelance",
-      titlePart1: "Desarrollo web",
-      titlePart2: "edición de video",
+      eyebrow: "Disponible · Necochea, Argentina",
+      titlePart1: "Sofía",
+      titlePart2: "Zapata",
+      role1: "Product Designer UX/UI",
+      role2: "IA aplicada al diseño",
+      role3: "Edición de video",
+      role4: "Generación de video con IA",
       subtitle:
-        "Soy Sofía Zapata. Combino frontend y contenido audiovisual para crear sitios web claros, modernos y piezas visuales pensadas para mostrar marcas, productos y proyectos de forma más profesional.",
+        "Diseño experiencias UX/UI potenciadas con IA y edito y genero video con inteligencia artificial, de la idea al resultado final.",
       btnProjects: "Ver proyectos web",
       btnVideo: "Ver edición",
       btnContact: "Escribime",
@@ -198,11 +202,15 @@ const TRANSLATIONS = {
   },
   en: {
     banner: {
-      eyebrow: "Available for freelance work",
-      titlePart1: "Web development",
-      titlePart2: "video editing",
+      eyebrow: "Available · Necochea, Argentina",
+      titlePart1: "Sofía",
+      titlePart2: "Zapata",
+      role1: "Product Designer UX/UI",
+      role2: "AI-applied design",
+      role3: "Video editing",
+      role4: "AI video generation",
       subtitle:
-        "I'm Sofía Zapata. I combine frontend development and audiovisual content to create clear, modern websites and visual pieces designed to showcase brands, products and projects more professionally.",
+        "I design AI-powered UX/UI experiences and edit and generate video with artificial intelligence, from idea to final result.",
       btnProjects: "See web projects",
       btnVideo: "See editing",
       btnContact: "Contact me",

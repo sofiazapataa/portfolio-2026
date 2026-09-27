@@ -199,10 +199,15 @@ input:-webkit-autofill, textarea:-webkit-autofill {
   margin-top: 22px; font-family: var(--font-display); font-weight: 500;
   font-size: clamp(44px, 6.4vw, 88px); line-height: 0.98; letter-spacing: -0.03em; color: var(--ink);
 }
-.hero__plus { display: inline-block; color: var(--accent); font-weight: 400; padding: 0 0.06em; }
 .hero__title-serif {
   display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
-  color: var(--ink-2); letter-spacing: -0.01em;
+  color: var(--accent); letter-spacing: -0.01em;
+}
+.hero__roles { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero__role-chip {
+  display: inline-flex; align-items: center; padding: 7px 14px;
+  border-radius: 999px; background: var(--surface); border: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 500; color: var(--ink-2); letter-spacing: 0.01em;
 }
 .hero__subtitle { margin-top: 22px; max-width: 560px; font-size: 16.5px; line-height: 1.65; color: var(--muted); }
 .hero__ctas { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
