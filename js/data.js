@@ -366,7 +366,7 @@ const PROJECTS_DATA = [
     demo: "https://presentacion-redise-o-cine.vercel.app/",
     repo: "https://github.com/sofiazapataa/presentacion-redise-o-cine.git",
     stack: ["Figma", "HTML", "Claude AI"],
-    featured: true,
+    featured: false,
   },
   {
     title: "Las Golondrinas",
@@ -384,7 +384,7 @@ const PROJECTS_DATA = [
     demo: "https://catalogo-cosmos-2-0.vercel.app/",
     repo: "https://github.com/sofiazapataa/catalogo-cosmos-2.0.git",
     stack: ["CSS", "React", "Figma", "Node", "Express", "MongoDB"],
-    featured: true,
+    featured: false,
   },
 ];
 
