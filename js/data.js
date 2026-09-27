@@ -349,7 +349,7 @@ const PROJECTS_DATA = [
   {
     title: "Aúna",
     type: "Product Designer, AI-assisted",
-    cover: BASE + "covers/finanzas-en-pareja.png",
+    cover: BASE + "covers/auna.png",
     demo: "https://finanzas-en-pareja-green.vercel.app/",
     repo: "https://github.com/sofiazapataa/finanzas-en-pareja.git",
     stack: ["Figma", "JavaScript", "HTML", "CSS", "Supabase"],
