@@ -67,8 +67,6 @@ const TRANSLATIONS = {
       eyebrow: "Trabajo audiovisual",
       titlePart1: "Edición",
       titlePart2: "de video",
-      intro:
-        "Esta parte del portfolio reúne mi perfil audiovisual: edición de piezas limpias, dinámicas y pensadas para comunicar mejor una marca o una idea en formatos digitales.",
       items: [
         "Edición de reels y videos cortos para redes sociales",
         "Piezas promocionales para marcas, productos o servicios",
@@ -240,8 +238,6 @@ const TRANSLATIONS = {
       eyebrow: "Audiovisual work",
       titlePart1: "Video",
       titlePart2: "editing",
-      intro:
-        "This part of the portfolio brings together my audiovisual profile: editing clean, dynamic pieces designed to better communicate a brand or idea in digital formats.",
       items: [
         "Editing reels and short videos for social media",
         "Promotional pieces for brands, products or services",

@@ -403,13 +403,18 @@ input:-webkit-autofill, textarea:-webkit-autofill {
    Video editing (light)
    ========================================================================== */
 #video-editing { padding: clamp(48px, 8vh, 88px) 0; }
-.ve-services { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 36px; }
-.ve-service { display: inline-flex; align-items: center; gap: 9px; }
-.ve-service__icon {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 9px; background: var(--accent-soft);
-  display: flex; align-items: center; justify-content: center; color: var(--accent-strong);
+.ve-services {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px;
+  margin-bottom: 40px; padding-top: 4px;
 }
-.ve-service__text { margin: 0; font-size: 13.5px; line-height: 1.4; color: var(--ink-2); font-weight: 500; white-space: nowrap; }
+.ve-service { display: flex; align-items: center; gap: 11px; }
+.ve-service__icon {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 9px; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center; color: var(--accent-strong);
+  transition: transform var(--t-fast), background-color var(--t-fast);
+}
+.ve-service:hover .ve-service__icon { transform: translateY(-2px) scale(1.06); background: var(--accent); color: var(--accent-ink); }
+.ve-service__text { margin: 0; font-size: 13.5px; line-height: 1.4; color: var(--ink-2); font-weight: 500; }
 
 .ve-hero {
   display: grid; grid-template-columns: 1.15fr 1fr; border-radius: 20px; overflow: hidden;
