@@ -34,6 +34,7 @@
   function applyI18n() {
     const t = T();
     document.documentElement.lang = state.lang;
+    document.title = t.meta.title;
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const val = getPath(t, el.getAttribute("data-i18n"));
@@ -52,6 +53,10 @@
     const themeTitle = state.theme === "light" ? t.controls.dark : t.controls.light;
     document.getElementById("btnTheme").setAttribute("aria-label", themeTitle);
     document.getElementById("btnTheme").setAttribute("title", themeTitle);
+
+    document.querySelector(".controls-group").setAttribute("aria-label", t.controls.group);
+
+    updateVEHeroPauseLabel();
   }
 
   // ---------------------------------------------------------------------
@@ -143,6 +148,35 @@
     liveLink.textContent = h.ctaLive;
   }
 
+  // El video del hero autoplay/loop necesita un control accesible de
+  // pausa (WCAG 2.2.2): no tiene atributo "controls" nativo a propósito
+  // porque choca con el scrim/badge del diseño. El ícono/label siguen el
+  // estado REAL del <video> (eventos play/pause), no una suposición
+  // optimista: si el navegador bloquea el autoplay, el botón ya arranca
+  // mostrando "reproducir" en vez de mentir sobre el estado.
+  function updateVEHeroPauseLabel() {
+    const btn = document.getElementById("veHeroPauseBtn");
+    if (!btn) return;
+    const t = T().videoEditing;
+    const label = btn.classList.contains("is-paused") ? t.playVideo : t.pauseVideo;
+    btn.setAttribute("aria-label", label);
+    btn.setAttribute("title", label);
+  }
+
+  function syncVEHeroPauseUI() {
+    const video = document.getElementById("veHeroVideo");
+    const btn = document.getElementById("veHeroPauseBtn");
+    if (!video || !btn) return;
+    btn.classList.toggle("is-paused", video.paused);
+    updateVEHeroPauseLabel();
+  }
+
+  function toggleVEHeroVideo() {
+    const video = document.getElementById("veHeroVideo");
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  }
+
   // ---------------------------------------------------------------------
   // Reels
   // ---------------------------------------------------------------------
@@ -161,6 +195,12 @@
     video.controls = true;
     video.preload = "auto";
     video.setAttribute("playsinline", "");
+    // Si el archivo no carga, sacamos el <video> roto y volvemos a mostrar
+    // la portada + botón de play que ya estaban debajo.
+    video.addEventListener("error", () => {
+      media.classList.remove("is-playing");
+      video.remove();
+    });
     media.appendChild(video);
     media.classList.add("is-playing");
     video.play().catch(() => {});
@@ -295,7 +335,7 @@
         '<div class="cert-card__media"><img src="' +
         c.img +
         '" alt="Certificado ' +
-        c.title +
+        escapeAttr(c.title) +
         '" loading="lazy"></div>' +
         '<div class="cert-card__body"><h3 class="cert-card__title">' +
         c.title +
@@ -427,6 +467,10 @@
         : "0 12px 30px rgba(10,10,10,0.1)";
       const btn = card.querySelector(".project-card__btn");
       btn.style.pointerEvents = isActive ? "auto" : "none";
+      // Las tarjetas no activas quedan chicas/detrás y su botón no hace nada
+      // al activarlo (ver click handler más abajo): afuera del tab order
+      // para que un usuario de teclado no caiga en un botón "muerto".
+      btn.tabIndex = isActive ? 0 : -1;
     });
 
     const dots = document.querySelectorAll("#coverflowDots .coverflow-dot");
@@ -612,16 +656,38 @@
     document.getElementById("modalVideoPlayer").pause();
   }
 
+  // Deja el resto de la página fuera del tab order y del árbol de
+  // accesibilidad mientras hay un modal abierto (evita que el foco por
+  // teclado "escape" del diálogo hacia el fondo).
+  function setBackgroundInert(isInert) {
+    document.querySelectorAll("body > *").forEach((el) => {
+      if (el.id === "projectModalOverlay" || el.id === "videoModalOverlay") return;
+      if (isInert) el.setAttribute("inert", "");
+      else el.removeAttribute("inert");
+    });
+  }
+
+  let lastFocusedEl = null;
+
   function showOverlay(id) {
-    document.getElementById(id).hidden = false;
+    const overlay = document.getElementById(id);
+    lastFocusedEl = document.activeElement;
+    overlay.hidden = false;
     document.body.style.overflow = "hidden";
+    setBackgroundInert(true);
+    const dialog = overlay.querySelector(".modal");
+    const focusTarget = dialog.querySelector('button, a[href]') || dialog;
+    focusTarget.focus();
   }
 
   function hideOverlay(id) {
     document.getElementById(id).hidden = true;
     if (document.getElementById("projectModalOverlay").hidden && document.getElementById("videoModalOverlay").hidden) {
       document.body.style.overflow = "";
+      setBackgroundInert(false);
     }
+    if (lastFocusedEl && typeof lastFocusedEl.focus === "function") lastFocusedEl.focus();
+    lastFocusedEl = null;
   }
 
   // ---------------------------------------------------------------------
@@ -648,6 +714,21 @@
   // ---------------------------------------------------------------------
   // Contact form (mailto)
   // ---------------------------------------------------------------------
+  // Los mensajes de error nativos del navegador salen en su propio idioma
+  // (no en el ES/EN del sitio); los reemplazamos por los de T().contact.
+  function setupContactValidation() {
+    const nameEl = document.getElementById("sz-name");
+    const emailEl = document.getElementById("sz-email");
+    const msgEl = document.getElementById("sz-msg");
+    [nameEl, emailEl, msgEl].forEach((el) => {
+      el.addEventListener("invalid", () => {
+        const c = T().contact;
+        el.setCustomValidity(el === emailEl && el.validity.typeMismatch ? c.errorEmail : c.errorRequired);
+      });
+      el.addEventListener("input", () => el.setCustomValidity(""));
+    });
+  }
+
   function submitForm(e) {
     e.preventDefault();
     const t = T();
@@ -656,6 +737,7 @@
     const message = document.getElementById("sz-msg").value;
     const subject = t.contact.mailSubject + " - " + (name || "Nuevo contacto");
     const body = [t.contact.mailName + ": " + name, "Email: " + email, "", t.contact.mailMessage + ":", message].join("\n");
+    document.getElementById("contactStatus").textContent = t.contact.sending;
     window.location.href = "mailto:sofizapata2004@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   }
 
@@ -688,7 +770,7 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    const sectionIds = ["skills", "projects", "video-skills", "video-editing", "contact"];
+    const sectionIds = ["skills", "projects", "video-editing", "contact"];
     const navLinks = document.querySelectorAll(".navbar__link");
     const sectionObserver = new IntersectionObserver(
       (entries) => {
@@ -787,10 +869,32 @@
     document.getElementById("videoModal").addEventListener("click", (e) => e.stopPropagation());
     document.getElementById("videoModalClose").addEventListener("click", closeVideoModal);
     document.getElementById("veHeroDetailBtn").addEventListener("click", openVideoHeroModal);
+    document.getElementById("veHeroPauseBtn").addEventListener("click", toggleVEHeroVideo);
+    document.getElementById("veHeroVideo").addEventListener("play", syncVEHeroPauseUI);
+    document.getElementById("veHeroVideo").addEventListener("pause", syncVEHeroPauseUI);
+    syncVEHeroPauseUI();
 
     document.getElementById("contactForm").addEventListener("submit", submitForm);
     document.getElementById("certsToggle").addEventListener("click", toggleCerts);
 
+    // Si una imagen no carga, la sacamos para que se vea el fondo del
+    // contenedor en vez del ícono roto del navegador ("error" no burbujea:
+    // hace falta capture).
+    document.addEventListener(
+      "error",
+      (e) => {
+        if (e.target.tagName === "IMG") e.target.style.display = "none";
+      },
+      true
+    );
+    document.getElementById("veHeroVideo").addEventListener("error", () => {
+      document.getElementById("veHeroVideo").style.display = "none";
+    });
+    document.getElementById("modalVideoPlayer").addEventListener("error", () => {
+      setVideoModalPlayer(null);
+    });
+
+    setupContactValidation();
     initScrollBehaviors();
     initKeyboard();
   }
