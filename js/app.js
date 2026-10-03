@@ -7,7 +7,7 @@
     lang: "es",
     activeProject: 0,
     certsOpen: false,
-    veCategory: "videos",
+    veOpenCategory: null,
   };
 
   const svgArrowRight =
@@ -66,6 +66,7 @@
     document.getElementById("btnTheme").setAttribute("title", themeTitle);
 
     document.querySelector(".controls-group").setAttribute("aria-label", t.controls.group);
+    document.getElementById("reelsPanelClose").setAttribute("aria-label", t.videoEditing.closeLabel);
 
     updateVEHeroPauseLabel();
   }
@@ -95,7 +96,7 @@
     renderVEServices();
     renderVEHero();
     renderVECategories();
-    renderReels();
+    updateReelsPanel();
     renderProjectCards();
     updateCoverflow();
   }
@@ -274,22 +275,34 @@
       "</span>" +
       "</button>";
 
+    container.classList.toggle("has-open", !!state.veOpenCategory);
     container.querySelectorAll(".category-folder").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-category") === state.veCategory));
+      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-category") === state.veOpenCategory));
       btn.addEventListener("animationend", () => btn.classList.remove("is-bouncing"));
       btn.addEventListener("click", () => {
         btn.classList.remove("is-bouncing");
         void btn.offsetWidth;
         btn.classList.add("is-bouncing");
-        const next = btn.getAttribute("data-category");
-        if (state.veCategory === next) return;
-        state.veCategory = next;
-        container.querySelectorAll(".category-folder").forEach((b) => {
-          b.setAttribute("aria-pressed", String(b.getAttribute("data-category") === state.veCategory));
-        });
-        renderReels();
+        const cat = btn.getAttribute("data-category");
+        state.veOpenCategory = state.veOpenCategory === cat ? null : cat;
+        updateReelsPanel();
       });
     });
+  }
+
+  function updateReelsPanel() {
+    const panel = document.getElementById("reelsPanel");
+    const container = document.getElementById("veCategories");
+    const isOpen = !!state.veOpenCategory;
+
+    panel.classList.toggle("is-open", isOpen);
+    panel.setAttribute("aria-hidden", String(!isOpen));
+    container.classList.toggle("has-open", isOpen);
+    container.querySelectorAll(".category-folder").forEach((b) => {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-category") === state.veOpenCategory));
+    });
+
+    if (isOpen) renderReels();
   }
 
   function renderReels() {
@@ -298,7 +311,7 @@
     const hintEl = document.getElementById("reelsHint");
     container.innerHTML = "";
 
-    if (state.veCategory === "images") {
+    if (state.veOpenCategory === "images") {
       if (hintEl) hintEl.textContent = tx.imagesHint;
       container.innerHTML =
         '<div class="reels-empty">' +
@@ -911,10 +924,15 @@
     renderVEServices();
     renderVEHero();
     renderVECategories();
-    renderReels();
+    updateReelsPanel();
     renderCerts();
     renderProjectCards();
     updateCoverflow();
+
+    document.getElementById("reelsPanelClose").addEventListener("click", () => {
+      state.veOpenCategory = null;
+      updateReelsPanel();
+    });
 
     document.getElementById("btnTheme").addEventListener("click", toggleTheme);
     document.getElementById("btnLang").addEventListener("click", toggleLang);

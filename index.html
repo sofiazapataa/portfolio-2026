@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- ?v= fuerza al navegador a bajar la versión nueva. Subilo al tocar css/js. -->
-<link rel="stylesheet" href="./css/styles.css?v=14">
+<link rel="stylesheet" href="./css/styles.css?v=18">
 </head>
 <body class="sz-body">
 
@@ -195,16 +195,21 @@
 
     <div class="ve-categories" id="veCategories"></div>
 
-    <div>
-      <div class="reels-head">
-        <div>
-          <span class="reels-head__eyebrow" data-i18n="videoEditing.reelsEyebrow">Últimas piezas</span>
-          <h3 class="reels-head__title" data-i18n="videoEditing.reelsTitle">Ejemplos recientes</h3>
+    <div class="reels-panel" id="reelsPanel">
+      <div class="reels-panel-inner">
+        <div class="reels-head">
+          <div>
+            <span class="reels-head__eyebrow" data-i18n="videoEditing.reelsEyebrow">Últimas piezas</span>
+            <h3 class="reels-head__title" data-i18n="videoEditing.reelsTitle">Ejemplos recientes</h3>
+          </div>
+          <span class="reels-head__hint" id="reelsHint" data-i18n="videoEditing.reelsHint">3 proyectos</span>
+          <button class="reels-panel-close" type="button" id="reelsPanelClose" aria-label="Cerrar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
         </div>
-        <span class="reels-head__hint" id="reelsHint" data-i18n="videoEditing.reelsHint">3 proyectos</span>
-      </div>
 
-      <div class="reels-grid" id="reelsGrid"></div>
+        <div class="reels-grid" id="reelsGrid"></div>
+      </div>
     </div>
 
     <div class="ve-footer">
@@ -395,7 +400,7 @@
 <!-- Copied toast -->
 <div class="toast" id="copiedToast" role="status" aria-live="polite" hidden>✓ <span data-i18n="banner.btnCopied">¡Link copiado!</span></div>
 
-<script src="./js/data.js?v=13"></script>
-<script src="./js/app.js?v=13"></script>
+<script src="./js/data.js?v=14"></script>
+<script src="./js/app.js?v=14"></script>
 </body>
 </html>
