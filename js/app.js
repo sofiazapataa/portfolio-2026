@@ -7,11 +7,22 @@
     lang: "es",
     activeProject: 0,
     certsOpen: false,
+    veCategory: "videos",
   };
 
   const svgArrowRight =
     '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg>';
   const svgPlay = '<svg width="22" height="22" viewBox="0 0 24 24" fill="#0a0a0a" style="margin-left:3px;"><path d="M8 5v14l11-7z"></path></svg>';
+
+  const VE_CATEGORY_ICONS = {
+    camera:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h3l2-2h8l2 2h3v12H3z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>',
+    grid:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>',
+    clapper:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-4h15L21 9"></path><path d="M3 9h18v10a1 1 0 01-1 1H4a1 1 0 01-1-1z"></path><path d="M6 9l1-4M11 9l1-4M16 9l1-4"></path></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>',
+  };
 
   const VE_SERVICE_ICONS = [
     '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 15h4M17 15h4"></path></svg>',
@@ -83,6 +94,7 @@
     applyI18n();
     renderVEServices();
     renderVEHero();
+    renderVECategories();
     renderReels();
     renderProjectCards();
     updateCoverflow();
@@ -231,11 +243,73 @@
     );
   }
 
+  function renderVECategories() {
+    const container = document.getElementById("veCategories");
+    const tx = T().videoEditing;
+    const videoCovers = [REEL_MEDIA[0].cover, REEL_MEDIA[1].cover];
+
+    container.innerHTML =
+      '<button class="category-folder" type="button" data-category="images" aria-label="' +
+      escapeAttr(tx.categoryImagesLabel) +
+      '">' +
+      '<span class="category-folder-stack">' +
+      '<span class="category-folder-photo category-folder-photo--1"></span>' +
+      '<span class="category-folder-photo category-folder-photo--2"></span>' +
+      '<span class="category-folder-glass">' +
+      '<span class="category-folder-sticker category-folder-sticker--a">' + VE_CATEGORY_ICONS.camera + "</span>" +
+      '<span class="category-folder-sticker category-folder-sticker--b">' + VE_CATEGORY_ICONS.grid + "</span>" +
+      "</span>" +
+      "</span>" +
+      "</button>" +
+      '<button class="category-folder" type="button" data-category="videos" aria-label="' +
+      escapeAttr(tx.categoryVideosLabel) +
+      '">' +
+      '<span class="category-folder-stack">' +
+      '<span class="category-folder-photo category-folder-photo--1" style="background-image:url(&quot;' + videoCovers[0] + '&quot;)"></span>' +
+      '<span class="category-folder-photo category-folder-photo--2" style="background-image:url(&quot;' + videoCovers[1] + '&quot;)"></span>' +
+      '<span class="category-folder-glass">' +
+      '<span class="category-folder-sticker category-folder-sticker--a">' + VE_CATEGORY_ICONS.clapper + "</span>" +
+      '<span class="category-folder-sticker category-folder-sticker--b">' + VE_CATEGORY_ICONS.play + "</span>" +
+      "</span>" +
+      "</span>" +
+      "</button>";
+
+    container.querySelectorAll(".category-folder").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-category") === state.veCategory));
+      btn.addEventListener("animationend", () => btn.classList.remove("is-bouncing"));
+      btn.addEventListener("click", () => {
+        btn.classList.remove("is-bouncing");
+        void btn.offsetWidth;
+        btn.classList.add("is-bouncing");
+        const next = btn.getAttribute("data-category");
+        if (state.veCategory === next) return;
+        state.veCategory = next;
+        container.querySelectorAll(".category-folder").forEach((b) => {
+          b.setAttribute("aria-pressed", String(b.getAttribute("data-category") === state.veCategory));
+        });
+        renderReels();
+      });
+    });
+  }
+
   function renderReels() {
     const container = document.getElementById("reelsGrid");
     const tx = T().videoEditing;
-    const videos = tx.videos;
+    const hintEl = document.getElementById("reelsHint");
     container.innerHTML = "";
+
+    if (state.veCategory === "images") {
+      if (hintEl) hintEl.textContent = tx.imagesHint;
+      container.innerHTML =
+        '<div class="reels-empty">' +
+        '<p class="reels-empty__title">' + tx.imagesEmptyTitle + "</p>" +
+        '<p class="reels-empty__desc">' + tx.imagesEmptyDesc + "</p>" +
+        "</div>";
+      return;
+    }
+
+    if (hintEl) hintEl.textContent = tx.reelsHint;
+    const videos = tx.videos;
 
     videos.forEach((v, i) => {
       const m = REEL_MEDIA[i];
@@ -836,6 +910,7 @@
     renderMarquee(document.getElementById("videoSkillsMarquee"), VIDEO_SKILLS, true);
     renderVEServices();
     renderVEHero();
+    renderVECategories();
     renderReels();
     renderCerts();
     renderProjectCards();
