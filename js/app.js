@@ -256,7 +256,7 @@
       '<span class="category-folder-stack">' +
       '<span class="category-folder-photo category-folder-photo--1"></span>' +
       '<span class="category-folder-photo category-folder-photo--2"></span>' +
-      '<span class="category-folder-glass">' +
+      '<span class="category-folder-glass category-folder-glass--dark">' +
       '<span class="category-folder-sticker category-folder-sticker--a">' + VE_CATEGORY_ICONS.camera + "</span>" +
       '<span class="category-folder-sticker category-folder-sticker--b">' + VE_CATEGORY_ICONS.grid + "</span>" +
       "</span>" +
@@ -268,7 +268,7 @@
       '<span class="category-folder-stack">' +
       '<span class="category-folder-photo category-folder-photo--1" style="background-image:url(&quot;' + videoCovers[0] + '&quot;)"></span>' +
       '<span class="category-folder-photo category-folder-photo--2" style="background-image:url(&quot;' + videoCovers[1] + '&quot;)"></span>' +
-      '<span class="category-folder-glass">' +
+      '<span class="category-folder-glass category-folder-glass--accent">' +
       '<span class="category-folder-sticker category-folder-sticker--a">' + VE_CATEGORY_ICONS.clapper + "</span>" +
       '<span class="category-folder-sticker category-folder-sticker--b">' + VE_CATEGORY_ICONS.play + "</span>" +
       "</span>" +

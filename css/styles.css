@@ -428,6 +428,7 @@ input:-webkit-autofill, textarea:-webkit-autofill {
   display: grid; grid-template-columns: 1.15fr 1fr; border-radius: 20px; overflow: hidden;
   border: 1px solid var(--border); background: var(--surface); box-shadow: var(--sh-2); margin-bottom: 28px;
 }
+.ve-hero[hidden] { display: none; }
 .ve-hero__media { position: relative; min-height: 220px; overflow: hidden; background: #0a0a0a; }
 .ve-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .ve-hero__scrim {
@@ -459,8 +460,13 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .ve-categories { display: flex; justify-content: center; gap: 28px; margin-bottom: 28px; }
 .category-folder { display: inline-flex; flex-direction: column; align-items: center; border: 0; background: none; padding: 6px; cursor: pointer; font-family: inherit; }
 .category-folder.is-bouncing { animation: folder-bounce 0.5s cubic-bezier(0.3, 1.5, 0.4, 1); }
-.category-folder-stack { position: relative; width: 154px; height: 130px; transition: transform 0.35s cubic-bezier(0.3, 0.85, 0.35, 1), opacity 0.35s ease; }
-.category-folder:hover .category-folder-stack { transform: translateY(-3px); }
+.category-folder-stack {
+  position: relative; width: 154px; height: 130px;
+  transition: transform 0.35s cubic-bezier(0.3, 0.85, 0.35, 1), opacity 0.35s ease, filter 0.35s ease;
+  filter: drop-shadow(0 10px 16px rgba(10, 10, 10, 0.14)) drop-shadow(0 22px 34px rgba(10, 10, 10, 0.16));
+}
+.category-folder:hover .category-folder-stack { transform: translateY(-3px); filter: drop-shadow(0 14px 20px rgba(10, 10, 10, 0.17)) drop-shadow(0 28px 42px rgba(10, 10, 10, 0.2)); }
+.category-folder[aria-pressed="true"] .category-folder-stack { filter: drop-shadow(0 14px 20px rgba(10, 10, 10, 0.17)) drop-shadow(0 28px 42px rgba(10, 10, 10, 0.2)); }
 .category-folder[aria-pressed="false"] .category-folder-stack { opacity: 0.6; }
 .category-folder[aria-pressed="false"]:hover .category-folder-stack { opacity: 0.88; }
 .category-folder-photo { position: absolute; top: 0; width: 76px; height: 96px; border-radius: 9px; border: 3px solid var(--surface); box-shadow: var(--sh-1); background-size: cover; background-position: center; background-color: var(--bg-tint); transition: transform 0.35s cubic-bezier(0.3, 0.85, 0.35, 1); }
@@ -468,20 +474,35 @@ input:-webkit-autofill, textarea:-webkit-autofill {
 .category-folder-photo--2 { right: 10px; transform: rotate(9deg); }
 .category-folder:hover .category-folder-photo--1 { transform: rotate(-18deg) translate(-6px, -6px); }
 .category-folder:hover .category-folder-photo--2 { transform: rotate(15deg) translate(6px, -6px); }
-.category-folder-glass { position: absolute; left: 0; right: 0; bottom: 0; height: 88px; border-radius: 0 18px 18px 18px; background: color-mix(in oklab, var(--surface) 55%, transparent); backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%); border: 1px solid var(--border); box-shadow: var(--sh-2); }
-.category-folder-glass::before { content: ""; position: absolute; left: 0; top: -14px; width: 58px; height: 17px; border-radius: 10px 10px 0 0; background: color-mix(in oklab, var(--surface) 55%, transparent); backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%); border: 1px solid var(--border); border-bottom: 0; }
+.category-folder-glass { position: absolute; left: 0; right: 0; bottom: 0; height: 88px; border-radius: 0 18px 18px 18px; box-shadow: var(--sh-2); backdrop-filter: blur(20px) saturate(220%); -webkit-backdrop-filter: blur(20px) saturate(220%); border: 1px solid rgba(255, 255, 255, 0.24); }
+.category-folder-glass::before { content: ""; position: absolute; left: 0; top: -14px; width: 58px; height: 17px; border-radius: 10px 10px 0 0; backdrop-filter: blur(20px) saturate(220%); -webkit-backdrop-filter: blur(20px) saturate(220%); border: 1px solid rgba(255, 255, 255, 0.24); border-bottom: 0; }
+.category-folder-glass--dark, .category-folder-glass--dark::before { background: color-mix(in oklab, #0a0a0a 32%, transparent); }
+.category-folder-glass--accent, .category-folder-glass--accent::before { background: color-mix(in oklab, var(--accent) 80%, transparent); }
 .category-folder-sticker { position: absolute; width: 36px; height: 36px; border-radius: 10px; background: var(--surface); border: 2px solid var(--surface); box-shadow: var(--sh-1); display: grid; place-items: center; color: var(--accent-strong); transition: transform 0.35s cubic-bezier(0.3, 0.85, 0.35, 1); }
 .category-folder-sticker svg { width: 17px; height: 17px; }
 .category-folder-sticker--a { left: 13px; bottom: 13px; transform: rotate(-8deg); }
 .category-folder-sticker--b { right: 10px; bottom: 21px; transform: rotate(9deg); }
 .category-folder:hover .category-folder-sticker--a { transform: rotate(-13deg) scale(1.08); }
 .category-folder:hover .category-folder-sticker--b { transform: rotate(14deg) scale(1.08); }
-.category-folder[aria-pressed="true"] .category-folder-glass { border-color: var(--accent); box-shadow: var(--sh-2), 0 0 0 2px var(--accent-ring); }
+.category-folder[aria-pressed="true"] .category-folder-glass { box-shadow: var(--sh-2), 0 0 0 3px var(--accent-ring); }
 .category-folder[aria-pressed="true"] .category-folder-photo--1 { transform: rotate(-18deg) translate(-5px, -5px); }
 .category-folder[aria-pressed="true"] .category-folder-photo--2 { transform: rotate(15deg) translate(5px, -5px); }
 .ve-categories.has-open .category-folder[aria-pressed="false"] .category-folder-stack { opacity: 0.5; }
 .ve-categories.has-open .category-folder[aria-pressed="false"]:hover .category-folder-stack { opacity: 0.8; }
 @keyframes folder-bounce { 0% { transform: scale(1); } 35% { transform: scale(0.9); } 65% { transform: scale(1.07); } 100% { transform: scale(1); } }
+@media (min-width: 960px) {
+  .ve-categories { gap: 40px; }
+  .category-folder-stack { width: 210px; height: 178px; }
+  .category-folder-photo { width: 104px; height: 130px; border-radius: 12px; border-width: 4px; }
+  .category-folder-photo--1 { left: 18px; }
+  .category-folder-photo--2 { right: 14px; }
+  .category-folder-glass { height: 120px; border-radius: 0 24px 24px 24px; }
+  .category-folder-glass::before { width: 79px; height: 23px; border-radius: 14px 14px 0 0; }
+  .category-folder-sticker { width: 49px; height: 49px; border-radius: 13px; }
+  .category-folder-sticker svg { width: 23px; height: 23px; }
+  .category-folder-sticker--a { left: 18px; bottom: 18px; }
+  .category-folder-sticker--b { right: 14px; bottom: 29px; }
+}
 @media (max-width: 640px) {
   .ve-categories { gap: 22px; }
   .category-folder-stack { width: 124px; height: 108px; }
