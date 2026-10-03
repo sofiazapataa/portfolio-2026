@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- ?v= fuerza al navegador a bajar la versión nueva. Subilo al tocar css/js. -->
-<link rel="stylesheet" href="./css/styles.css?v=18">
+<link rel="stylesheet" href="./css/styles.css?v=19">
 </head>
 <body class="sz-body">
 
@@ -171,32 +171,32 @@
 
     <div class="ve-services" id="veServices"></div>
 
-    <div class="ve-hero" id="veHero">
-      <div class="ve-hero__media">
-        <video class="ve-hero__video" id="veHeroVideo" autoplay muted loop playsinline preload="metadata"></video>
-        <div class="ve-hero__scrim"></div>
-        <span class="ve-hero__tag" id="veHeroTag"><span class="ve-hero__tag-dot"></span></span>
-        <button class="ve-hero__pause" id="veHeroPauseBtn" type="button">
-          <svg class="icon-ve-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
-          <svg class="icon-ve-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:1px;"><path d="M8 5v14l11-7z"></path></svg>
-        </button>
-      </div>
-      <div class="ve-hero__body">
-        <span class="ve-hero__label" id="veHeroLabel"></span>
-        <h3 class="ve-hero__title" id="veHeroTitle"></h3>
-        <div class="ve-hero__duration" id="veHeroDuration"></div>
-        <p class="ve-hero__desc" id="veHeroDesc"></p>
-        <div class="ve-hero__actions">
-          <button class="btn btn--outline" type="button" id="veHeroDetailBtn"></button>
-          <a class="btn btn--ghost" id="veHeroLiveLink" target="_blank" rel="noopener noreferrer"></a>
-        </div>
-      </div>
-    </div>
-
     <div class="ve-categories" id="veCategories"></div>
 
     <div class="reels-panel" id="reelsPanel">
       <div class="reels-panel-inner">
+        <div class="ve-hero" id="veHero" hidden>
+          <div class="ve-hero__media">
+            <video class="ve-hero__video" id="veHeroVideo" muted loop playsinline preload="metadata"></video>
+            <div class="ve-hero__scrim"></div>
+            <span class="ve-hero__tag" id="veHeroTag"><span class="ve-hero__tag-dot"></span></span>
+            <button class="ve-hero__pause" id="veHeroPauseBtn" type="button">
+              <svg class="icon-ve-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
+              <svg class="icon-ve-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-left:1px;"><path d="M8 5v14l11-7z"></path></svg>
+            </button>
+          </div>
+          <div class="ve-hero__body">
+            <span class="ve-hero__label" id="veHeroLabel"></span>
+            <h3 class="ve-hero__title" id="veHeroTitle"></h3>
+            <div class="ve-hero__duration" id="veHeroDuration"></div>
+            <p class="ve-hero__desc" id="veHeroDesc"></p>
+            <div class="ve-hero__actions">
+              <button class="btn btn--outline" type="button" id="veHeroDetailBtn"></button>
+              <a class="btn btn--ghost" id="veHeroLiveLink" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+          </div>
+        </div>
+
         <div class="reels-head">
           <div>
             <span class="reels-head__eyebrow" data-i18n="videoEditing.reelsEyebrow">Últimas piezas</span>
@@ -401,6 +401,6 @@
 <div class="toast" id="copiedToast" role="status" aria-live="polite" hidden>✓ <span data-i18n="banner.btnCopied">¡Link copiado!</span></div>
 
 <script src="./js/data.js?v=14"></script>
-<script src="./js/app.js?v=14"></script>
+<script src="./js/app.js?v=15"></script>
 </body>
 </html>

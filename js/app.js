@@ -302,6 +302,13 @@
       b.setAttribute("aria-pressed", String(b.getAttribute("data-category") === state.veOpenCategory));
     });
 
+    const hero = document.getElementById("veHero");
+    const heroVideo = document.getElementById("veHeroVideo");
+    const showHero = state.veOpenCategory === "videos";
+    hero.hidden = !showHero;
+    if (showHero) heroVideo.play().catch(() => {});
+    else heroVideo.pause();
+
     if (isOpen) renderReels();
   }
 
